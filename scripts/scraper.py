@@ -382,6 +382,12 @@ def main():
 
     # Calcular variación anual antes de armar el JSON
     if mode in ("ipc", "all", "both"):
+        ipc_previo = latest_prev.get("ipc", {})
+        if ipc.get("fecha") == ipc_previo.get("fecha"):
+            print(f"\n  IPC sin cambios ({ipc['fecha']}) — el BCV no ha actualizado aún.")
+            if mode == "ipc":
+                print("  Nada que guardar.")
+                sys.exit(0)
         ipc = calcular_variacion_anual(ipc, history_data)
 
     latest = build_latest(tasa, ipc)

@@ -3,7 +3,8 @@ name: Update BCV Data
 on:
   # Tasa de cambio: lunes a viernes, 19:30 UTC (≈ 15:30 VET)
   schedule:
-    - cron: "30 19 * * 1-5"
+    - cron: "30 19 * * 1-5"   # tasa diaria
+    - cron: "0 12 * * 1"      # IPC: lunes al mediodía UTC
 
   # Disparo manual con selector de modo
   workflow_dispatch:
@@ -48,7 +49,11 @@ jobs:
         id: mode
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            echo "mode=tasa" >> "$GITHUB_OUTPUT"
+            if [ "${{ github.event.schedule }}" = "0 12 * * 1" ]; then
+              echo "mode=ipc" >> "$GITHUB_OUTPUT"
+            else
+              echo "mode=tasa" >> "$GITHUB_OUTPUT"
+            fi
           else
             echo "mode=${{ github.event.inputs.mode }}" >> "$GITHUB_OUTPUT"
           fi
