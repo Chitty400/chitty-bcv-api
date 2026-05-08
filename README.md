@@ -3,7 +3,7 @@
 [![Update BCV Data](https://github.com/chitty400/bcv-api/actions/workflows/update-bcv.yml/badge.svg)](https://github.com/chitty400/bcv-api/actions/workflows/update-bcv.yml)
 
 API estática gratuita con datos oficiales del **Banco Central de Venezuela (BCV)**.  
-Actualizada automáticamente con GitHub Actions. Consumible desde cualquier app sin backend.
+Actualizada automáticamente con GitHub Actions. Consumible desde cualquier app sin backend entrega Tasa BCV del dia y INPC mensual.
 
 ---
 
@@ -49,8 +49,8 @@ Actualizada automáticamente con GitHub Actions. Consumible desde cualquier app 
 
 | Dato | Frecuencia | Fuente BCV |
 |------|-----------|------------|
-| Tasa USD/VES | Diaria (lun–vie, ~3:30pm VET) | `bcv.org.ve` (scraping HTML) |
-| IPC mensual | Manual (BCV publica con retraso) | XLS en `bcv.org.ve/estadisticas/consumidor` |
+| Tasa USD/VES | Diaria (lun–vie, ~1AM Hora local) | `bcv.org.ve` (scraping HTML) |
+| IPC mensual | Diaria (lun–vie, ~2AM Hora local) | XLS en `bcv.org.ve/estadisticas/consumidor` |
 
 Para forzar una actualización del IPC: **Actions → Update BCV Data → Run workflow → mode: ipc**
 
