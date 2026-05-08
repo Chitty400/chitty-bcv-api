@@ -12,7 +12,7 @@ Actualizada automáticamente con GitHub Actions. Consumible desde cualquier app 
 | Archivo | URL | Descripción |
 |---------|-----|-------------|
 | `latest.json` | `https://chitty400.github.io/chitty-bcv-api/latest.json` | Dato más reciente (tasa + IPC) |
-| `history.json` | `https://chitty400.github.io/chitty-bcv-api/history.json` | Serie histórica completa |
+| `history.json` | `https://chitty400.github.io/chitty-bcv-api/history.json` | Serie histórica completa del INPC (sin tasa BCV) |
 
 ---
 
