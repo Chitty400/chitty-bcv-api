@@ -1,6 +1,6 @@
 # 🏦 BCV Static API
 
-[![Update BCV Data](https://github.com/TU_USUARIO/bcv-api/actions/workflows/update-bcv.yml/badge.svg)](https://github.com/TU_USUARIO/bcv-api/actions/workflows/update-bcv.yml)
+[![Update BCV Data](https://github.com/chitty400/bcv-api/actions/workflows/update-bcv.yml/badge.svg)](https://github.com/chitty400/bcv-api/actions/workflows/update-bcv.yml)
 
 API estática gratuita con datos oficiales del **Banco Central de Venezuela (BCV)**.  
 Actualizada automáticamente con GitHub Actions. Consumible desde cualquier app sin backend.
@@ -11,8 +11,8 @@ Actualizada automáticamente con GitHub Actions. Consumible desde cualquier app 
 
 | Archivo | URL | Descripción |
 |---------|-----|-------------|
-| `latest.json` | `https://TU_USUARIO.github.io/bcv-api/latest.json` | Dato más reciente (tasa + IPC) |
-| `history.json` | `https://TU_USUARIO.github.io/bcv-api/history.json` | Serie histórica completa |
+| `latest.json` | `https://chitty400.github.io/bcv-api/latest.json` | Dato más reciente (tasa + IPC) |
+| `history.json` | `https://chitty400.github.io/bcv-api/history.json` | Serie histórica completa |
 
 ---
 
@@ -71,7 +71,7 @@ import 'package:http/http.dart' as http;
 
 Future<Map<String, dynamic>> fetchBCV() async {
   final response = await http.get(
-    Uri.parse('https://TU_USUARIO.github.io/bcv-api/latest.json'),
+    Uri.parse('https://chitty400.github.io/bcv-api/latest.json'),
   );
   return jsonDecode(response.body);
 }
@@ -82,7 +82,7 @@ Future<Map<String, dynamic>> fetchBCV() async {
 ## 🛠️ Setup local
 
 ```bash
-git clone https://github.com/TU_USUARIO/bcv-api
+git clone https://github.com/chitty400/bcv-api
 cd bcv-api
 pip install -r scripts/requirements.txt
 
