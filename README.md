@@ -11,8 +11,8 @@ Actualizada automáticamente con GitHub Actions. Consumible desde cualquier app 
 
 | Archivo | URL | Descripción |
 |---------|-----|-------------|
-| `latest.json` | `https://chitty400.github.io/bcv-api/latest.json` | Dato más reciente (tasa + IPC) |
-| `history.json` | `https://chitty400.github.io/bcv-api/history.json` | Serie histórica completa |
+| `latest.json` | `https://chitty400.github.io/chitty-bcv-api/latest.json` | Dato más reciente (tasa + IPC) |
+| `history.json` | `https://chitty400.github.io/chitty-bcv-api/history.json` | Serie histórica completa |
 
 ---
 
