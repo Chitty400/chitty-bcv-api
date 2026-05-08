@@ -82,7 +82,7 @@ Future<Map<String, dynamic>> fetchBCV() async {
 ## 🛠️ Setup local
 
 ```bash
-git clone https://github.com/chitty400/bcv-api
+git clone https://github.com/chitty400/chitty-bcv-api
 cd bcv-api
 pip install -r scripts/requirements.txt
 
