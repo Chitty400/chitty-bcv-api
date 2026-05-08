@@ -1,6 +1,6 @@
 # 🏦 BCV Static API
 
-[![Update BCV Data](https://github.com/chitty400/bcv-api/actions/workflows/update-bcv.yml/badge.svg)](https://github.com/chitty400/bcv-api/actions/workflows/update-bcv.yml)
+[![Update BCV Data](https://github.com/chitty400/chitty-bcv-api/actions/workflows/update-bcv.yml/badge.svg)](https://github.com/chitty400/chitty-bcv-api/actions/workflows/update-bcv.yml)
 
 API estática gratuita con datos oficiales del **Banco Central de Venezuela (BCV)**.  
 Actualizada automáticamente con GitHub Actions. Consumible desde cualquier app sin backend entrega Tasa BCV del dia y INPC mensual.
