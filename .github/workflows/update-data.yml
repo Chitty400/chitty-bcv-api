@@ -1,0 +1,111 @@
+name: Update BCV Data
+
+on:
+  # Tasa: todos los días hábiles a las 15:30 VET (19:30 UTC)
+  # El BCV publica la tasa al cierre de operaciones (~3pm VET)
+  schedule:
+    - cron: "30 19 * * 1-5"   # Lunes a viernes, 19:30 UTC
+
+  # Trigger manual desde la UI de GitHub Actions
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Qué actualizar"
+        required: true
+        default: "tasa"
+        type: choice
+        options:
+          - tasa
+          - ipc
+          - all
+
+jobs:
+  update-tasa:
+    name: Actualizar Tasa BCV
+    runs-on: ubuntu-latest
+    # Solo corre en schedule (tasa) o si se pidió tasa/all manualmente
+    if: |
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' &&
+       (github.event.inputs.mode == 'tasa' || github.event.inputs.mode == 'all'))
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Necesitamos el historial para el push posterior
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: pip install -r scripts/requirements.txt
+
+      - name: Ejecutar scraper (tasa)
+        env:
+          SCRAPER_MODE: tasa
+        run: python scripts/scraper.py tasa
+
+      - name: Commit y push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "data: actualizar tasa BCV [${{ env.CURRENT_DATE }}]"
+          file_pattern: "docs/latest.json docs/history.json"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+
+  update-ipc:
+    name: Actualizar IPC BCV
+    runs-on: ubuntu-latest
+    # Corre el primer día hábil de cada mes, o si se pidió manualmente
+    if: |
+      (github.event_name == 'schedule' &&
+       (github.event.schedule == '30 19 * * 1-5') &&
+       false) ||
+      (github.event_name == 'workflow_dispatch' &&
+       (github.event.inputs.mode == 'ipc' || github.event.inputs.mode == 'all'))
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: pip install -r scripts/requirements.txt
+
+      - name: Ejecutar scraper (IPC)
+        env:
+          SCRAPER_MODE: ipc
+        run: python scripts/scraper.py ipc
+
+      - name: Commit y push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "data: actualizar IPC BCV"
+          file_pattern: "docs/latest.json docs/history.json"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# NOTA: El cron del IPC está desactivado por defecto (el BCV publica el IPC
+# con retraso de semanas; se recomienda dispararlo manualmente con
+# workflow_dispatch → mode: ipc cuando aparezca el dato.
+# ─────────────────────────────────────────────────────────────────────────────

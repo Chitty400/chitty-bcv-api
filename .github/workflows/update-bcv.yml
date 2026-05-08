@@ -1,0 +1,68 @@
+name: Update BCV Data
+
+on:
+  # Tasa de cambio: lunes a viernes, 19:30 UTC (≈ 15:30 VET)
+  schedule:
+    - cron: "30 19 * * 1-5"
+
+  # Disparo manual con selector de modo
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Qué actualizar (tasa | ipc | all)"
+        required: true
+        default: tasa
+        type: choice
+        options:
+          - tasa
+          - ipc
+          - all
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    name: "Scrape BCV"
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Código ──────────────────────────────────────────────────────
+      - uses: actions/checkout@v4
+
+      # ── 2. Python ──────────────────────────────────────────────────────
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r scripts/requirements.txt
+
+      # ── 3. Resolver modo ───────────────────────────────────────────────
+      # En schedule siempre actualizamos solo la tasa.
+      # En workflow_dispatch usamos el input del usuario.
+      - name: Determinar modo
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "mode=tasa" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=${{ github.event.inputs.mode }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── 4. Ejecutar scraper ────────────────────────────────────────────
+      - name: Ejecutar scraper
+        env:
+          SCRAPER_MODE: ${{ steps.mode.outputs.mode }}
+        run: python scripts/scraper.py ${{ steps.mode.outputs.mode }}
+
+      # ── 5. Publicar cambios ────────────────────────────────────────────
+      - name: Commit datos actualizados
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "data(bot): ${{ steps.mode.outputs.mode }} @ ${{ github.run_started_at }}"
+          file_pattern: "docs/*.json"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
