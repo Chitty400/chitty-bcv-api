@@ -15,11 +15,8 @@ from pathlib import Path
 # ── Dependencias opcionales (se instalan en el workflow) ──────────────────────
 try:
     from bs4 import BeautifulSoup
-    import openpyxl
-    from openpyxl import load_workbook
-    import io
 except ImportError:
-    print("ERROR: Instala dependencias: pip install beautifulsoup4 openpyxl requests lxml")
+    print("ERROR: Instala dependencias: pip install beautifulsoup4 requests lxml")
     sys.exit(1)
 
 try:
@@ -108,72 +105,95 @@ def scrape_tasa_bcv() -> float:
 
 def _parse_xls_bytes(content: bytes) -> dict:
     """
-    Parsea el XLS del BCV con openpyxl.
-    Columnas esperadas: Fecha | Índice | Variación mensual % | Variación anual %
-    El archivo tiene encabezados en las primeras filas; los datos empiezan después.
-    Retorna el registro más reciente.
+    Parsea el XLS del BCV convirtiéndolo a CSV vía LibreOffice y leyendo
+    el formato real del archivo:
+
+        2026(*),,
+        Abril,403528566746262,10.6
+        Marzo,364960489482614,13.1
+        ...
+        2025(*),,
+        Diciembre,...
+
+    El año aparece como fila de encabezado de grupo.
+    El dato más reciente es el primero que aparece en el archivo.
     """
-    # openpyxl no soporta .xls (formato antiguo) — usamos xlrd si está disponible
+    import subprocess
+    import tempfile
+    import os
+
+    MESES_ES = {
+        "enero": 1, "febrero": 2, "marzo": 3, "abril": 4,
+        "mayo": 5, "junio": 6, "julio": 7, "agosto": 8,
+        "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12,
+    }
+
+    # Escribir bytes a archivo temporal .xls
+    with tempfile.NamedTemporaryFile(suffix=".xls", delete=False) as tmp:
+        tmp.write(content)
+        tmp_path = tmp.name
+
+    csv_path = tmp_path.replace(".xls", ".csv")
+
     try:
-        import xlrd
-        book = xlrd.open_workbook(file_contents=content)
-        sheet = book.sheet_by_index(0)
+        # Convertir a CSV con LibreOffice
+        result = subprocess.run(
+            ["libreoffice", "--headless", "--convert-to", "csv",
+             tmp_path, "--outdir", os.path.dirname(tmp_path)],
+            capture_output=True, text=True, timeout=60
+        )
+        if result.returncode != 0:
+            raise ValueError(f"LibreOffice falló: {result.stderr}")
 
-        # Buscar la última fila con datos (de abajo hacia arriba)
-        last_row = None
-        for i in range(sheet.nrows - 1, -1, -1):
-            row = sheet.row_values(i)
-            # Fila válida: primera celda es texto de fecha o año, tercera/cuarta son números
-            if row[0] and row[2] and isinstance(row[2], (int, float)) and float(row[2]) != 0:
-                last_row = row
-                break
+        with open(csv_path, encoding="utf-8", errors="replace") as f:
+            csv_text = f.read()
 
-        if last_row is None:
-            raise ValueError("No se encontraron filas de datos en el XLS")
+    finally:
+        os.unlink(tmp_path)
+        if os.path.exists(csv_path):
+            os.unlink(csv_path)
 
-        fecha_raw = str(last_row[0]).strip()
-        var_mensual = float(last_row[2])
-        var_anual   = float(last_row[3]) if len(last_row) > 3 and last_row[3] else None
+    return _parse_ipc_csv(csv_text, MESES_ES)
 
-        # Normalizar fecha → "YYYY-MM"
-        fecha = _normalize_fecha(fecha_raw)
-        return {
-            "fecha": fecha,
-            "variacion_mensual": round(var_mensual, 2),
-            "variacion_anual": round(var_anual, 2) if var_anual else None,
-        }
 
-    except ImportError:
-        pass
+def _parse_ipc_csv(text: str, meses: dict) -> dict:
+    """
+    Lee el CSV generado del XLS del BCV y retorna el dato más reciente.
+    Estructura: año como fila de grupo, luego filas mes,índice,var%
+    """
+    import re
 
-    # Fallback: intentar con openpyxl (puede fallar con .xls antiguo)
-    try:
-        wb = load_workbook(filename=io.BytesIO(content), read_only=True, data_only=True)
-        ws = wb.active
+    current_year = None
 
-        last_row = None
-        for row in ws.iter_rows(values_only=True):
-            if row[0] is not None and row[2] is not None:
-                try:
-                    float(row[2])
-                    last_row = row
-                except (TypeError, ValueError):
-                    pass
+    for line in text.strip().splitlines():
+        cols = [c.strip() for c in line.split(",")]
+        col0 = cols[0].strip()
 
-        if last_row is None:
-            raise ValueError("No se encontraron datos en el XLS (openpyxl)")
+        # Detectar fila de año: "2026(*)" o "2025(*)" o "2024"
+        m = re.match(r"^(\d{4})", col0)
+        if m:
+            c1 = cols[1].strip() if len(cols) > 1 else ""
+            if not c1 or not re.match(r"\d", c1):
+                current_year = int(m.group(1))
+                continue
 
-        fecha   = _normalize_fecha(str(last_row[0]))
-        var_m   = float(last_row[2])
-        var_a   = float(last_row[3]) if len(last_row) > 3 and last_row[3] is not None else None
+        # Detectar fila de dato: nombre de mes + índice + variación
+        mes_lower = col0.lower()
+        if mes_lower in meses and current_year and len(cols) >= 3:
+            try:
+                var_m = float(cols[2])
+                mes_num = meses[mes_lower]
+                # El archivo está ordenado del más reciente al más antiguo
+                # → el primero válido que encontramos es el dato actual
+                return {
+                    "fecha": f"{current_year}-{mes_num:02d}",
+                    "variacion_mensual": round(var_m, 2),
+                    "variacion_anual": None,
+                }
+            except (ValueError, IndexError):
+                pass
 
-        return {
-            "fecha": fecha,
-            "variacion_mensual": round(var_m, 2),
-            "variacion_anual": round(var_a, 2) if var_a else None,
-        }
-    except Exception as e:
-        raise ValueError(f"No se pudo parsear el XLS: {e}")
+    raise ValueError("No se encontraron datos IPC válidos en el CSV")
 
 
 def _normalize_fecha(raw: str) -> str:

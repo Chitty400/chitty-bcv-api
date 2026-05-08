@@ -37,7 +37,9 @@ jobs:
           cache: pip
 
       - name: Instalar dependencias
-        run: pip install -r scripts/requirements.txt
+        run: |
+          sudo apt-get install -y libreoffice --no-install-recommends -q
+          pip install -r scripts/requirements.txt
 
       # ── 3. Resolver modo ───────────────────────────────────────────────
       # En schedule siempre actualizamos solo la tasa.
