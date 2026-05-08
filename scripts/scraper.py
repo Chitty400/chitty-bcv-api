@@ -29,7 +29,7 @@ except ImportError:
 BCV_HOME_URL     = "https://www.bcv.org.ve/"
 BCV_IPC_XLS_URL  = (
     "https://www.bcv.org.ve/sites/default/files/precios_consumidor/"
-    "4_5_7_indice_y_variaciones_mensuales_serie_desde_dic_2007_1.xls"
+    "4_5_7_0.xls"
 )
 
 HEADERS = {
