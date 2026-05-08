@@ -1,1 +1,2422 @@
-[]
+[
+  {
+    "date": "2026-04-01",
+    "updated_at": "2026-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2026-04",
+      "indice": 403528566746262.0,
+      "variacion_mensual": 10.6,
+      "variacion_anual": 611.86
+    }
+  },
+  {
+    "date": "2026-03-01",
+    "updated_at": "2026-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2026-03",
+      "indice": 364960489482614.0,
+      "variacion_mensual": 13.1,
+      "variacion_anual": 649.47
+    }
+  },
+  {
+    "date": "2026-02-01",
+    "updated_at": "2026-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2026-02",
+      "indice": 322703709401564.0,
+      "variacion_mensual": 14.6,
+      "variacion_anual": 617.94
+    }
+  },
+  {
+    "date": "2026-01-01",
+    "updated_at": "2026-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2026-01",
+      "indice": 281565112063483.0,
+      "variacion_mensual": 32.6,
+      "variacion_anual": 594.85
+    }
+  },
+  {
+    "date": "2025-12-01",
+    "updated_at": "2025-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-12",
+      "indice": 212393273459827.0,
+      "variacion_mensual": 13.6,
+      "variacion_anual": 475.28
+    }
+  },
+  {
+    "date": "2025-11-01",
+    "updated_at": "2025-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-11",
+      "indice": 187021825372618.0,
+      "variacion_mensual": 21.6,
+      "variacion_anual": 458.0
+    }
+  },
+  {
+    "date": "2025-10-01",
+    "updated_at": "2025-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-10",
+      "indice": 153849788402697.0,
+      "variacion_mensual": 25.93,
+      "variacion_anual": 428.69
+    }
+  },
+  {
+    "date": "2025-09-01",
+    "updated_at": "2025-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-09",
+      "indice": 122169616603139.0,
+      "variacion_mensual": 21.56,
+      "variacion_anual": 336.74
+    }
+  },
+  {
+    "date": "2025-08-01",
+    "updated_at": "2025-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-08",
+      "indice": 100503985890336.0,
+      "variacion_mensual": 16.1,
+      "variacion_anual": 262.22
+    }
+  },
+  {
+    "date": "2025-07-01",
+    "updated_at": "2025-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-07",
+      "indice": 86578516564082.4,
+      "variacion_mensual": 14.2,
+      "variacion_anual": 216.37
+    }
+  },
+  {
+    "date": "2025-06-01",
+    "updated_at": "2025-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-06",
+      "indice": 75780386243945.1,
+      "variacion_mensual": 10.3,
+      "variacion_anual": 178.99
+    }
+  },
+  {
+    "date": "2025-05-01",
+    "updated_at": "2025-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-05",
+      "indice": 68691300824090.4,
+      "variacion_mensual": 21.2,
+      "variacion_anual": 155.32
+    }
+  },
+  {
+    "date": "2025-04-01",
+    "updated_at": "2025-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-04",
+      "indice": 56686369544411.3,
+      "variacion_mensual": 16.4,
+      "variacion_anual": 113.78
+    }
+  },
+  {
+    "date": "2025-03-01",
+    "updated_at": "2025-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-03",
+      "indice": 48695941027700.9,
+      "variacion_mensual": 8.3,
+      "variacion_anual": 87.39
+    }
+  },
+  {
+    "date": "2025-02-01",
+    "updated_at": "2025-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-02",
+      "indice": 44948592993158.4,
+      "variacion_mensual": 10.9,
+      "variacion_anual": 75.0
+    }
+  },
+  {
+    "date": "2025-01-01",
+    "updated_at": "2025-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2025-01",
+      "indice": 40521840708458.3,
+      "variacion_mensual": 9.8,
+      "variacion_anual": 59.66
+    }
+  },
+  {
+    "date": "2024-12-01",
+    "updated_at": "2024-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-12",
+      "indice": 36919909673224.9,
+      "variacion_mensual": 10.2,
+      "variacion_anual": 47.96
+    }
+  },
+  {
+    "date": "2024-11-01",
+    "updated_at": "2024-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-11",
+      "indice": 33516689669759.1,
+      "variacion_mensual": 15.2,
+      "variacion_anual": 37.58
+    }
+  },
+  {
+    "date": "2024-10-01",
+    "updated_at": "2024-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-10",
+      "indice": 29100339690082.1,
+      "variacion_mensual": 4.0,
+      "variacion_anual": 23.58
+    }
+  },
+  {
+    "date": "2024-09-01",
+    "updated_at": "2024-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-09",
+      "indice": 27972976631499.6,
+      "variacion_mensual": 0.8,
+      "variacion_anual": 25.75
+    }
+  },
+  {
+    "date": "2024-08-01",
+    "updated_at": "2024-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-08",
+      "indice": 27746667522384.2,
+      "variacion_mensual": 1.4,
+      "variacion_anual": 35.55
+    }
+  },
+  {
+    "date": "2024-07-01",
+    "updated_at": "2024-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-07",
+      "indice": 27366064708317.6,
+      "variacion_mensual": 0.7,
+      "variacion_anual": 43.6
+    }
+  },
+  {
+    "date": "2024-06-01",
+    "updated_at": "2024-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-06",
+      "indice": 27162536873498.1,
+      "variacion_mensual": 1.0,
+      "variacion_anual": 51.37
+    }
+  },
+  {
+    "date": "2024-05-01",
+    "updated_at": "2024-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-05",
+      "indice": 26903972496868.1,
+      "variacion_mensual": 1.5,
+      "variacion_anual": 59.16
+    }
+  },
+  {
+    "date": "2024-04-01",
+    "updated_at": "2024-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-04",
+      "indice": 26516834159241.7,
+      "variacion_mensual": 2.0,
+      "variacion_anual": 64.91
+    }
+  },
+  {
+    "date": "2024-03-01",
+    "updated_at": "2024-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-03",
+      "indice": 25986417377849.1,
+      "variacion_mensual": 1.2,
+      "variacion_anual": 67.76
+    }
+  },
+  {
+    "date": "2024-02-01",
+    "updated_at": "2024-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-02",
+      "indice": 25684975429035.5,
+      "variacion_mensual": 1.2,
+      "variacion_anual": 75.91
+    }
+  },
+  {
+    "date": "2024-01-01",
+    "updated_at": "2024-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2024-01",
+      "indice": 25379624724721.4,
+      "variacion_mensual": 1.7,
+      "variacion_anual": 107.36
+    }
+  },
+  {
+    "date": "2023-12-01",
+    "updated_at": "2023-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-12",
+      "indice": 24952896762695.5,
+      "variacion_mensual": 2.4,
+      "variacion_anual": 189.78
+    }
+  },
+  {
+    "date": "2023-11-01",
+    "updated_at": "2023-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-11",
+      "indice": 24361617825691.9,
+      "variacion_mensual": 3.5,
+      "variacion_anual": 282.78
+    }
+  },
+  {
+    "date": "2023-10-01",
+    "updated_at": "2023-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-10",
+      "indice": 23547066398042.6,
+      "variacion_mensual": 5.9,
+      "variacion_anual": 316.45
+    }
+  },
+  {
+    "date": "2023-09-01",
+    "updated_at": "2023-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-09",
+      "indice": 22244633245832.3,
+      "variacion_mensual": 8.7,
+      "variacion_anual": 317.63
+    }
+  },
+  {
+    "date": "2023-08-01",
+    "updated_at": "2023-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-08",
+      "indice": 20470345755220.7,
+      "variacion_mensual": 7.4,
+      "variacion_anual": 394.76
+    }
+  },
+  {
+    "date": "2023-07-01",
+    "updated_at": "2023-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-07",
+      "indice": 19056534940064.7,
+      "variacion_mensual": 6.2,
+      "variacion_anual": 398.19
+    }
+  },
+  {
+    "date": "2023-06-01",
+    "updated_at": "2023-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-06",
+      "indice": 17944103145979.7,
+      "variacion_mensual": 6.2,
+      "variacion_anual": 404.37
+    }
+  },
+  {
+    "date": "2023-05-01",
+    "updated_at": "2023-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-05",
+      "indice": 16903293865395.6,
+      "variacion_mensual": 5.1,
+      "variacion_anual": 429.21
+    }
+  },
+  {
+    "date": "2023-04-01",
+    "updated_at": "2023-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-04",
+      "indice": 16079339845626.0,
+      "variacion_mensual": 3.8,
+      "variacion_anual": 436.34
+    }
+  },
+  {
+    "date": "2023-03-01",
+    "updated_at": "2023-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-03",
+      "indice": 15490514782940.4,
+      "variacion_mensual": 6.1,
+      "variacion_anual": 439.61
+    }
+  },
+  {
+    "date": "2023-02-01",
+    "updated_at": "2023-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-02",
+      "indice": 14601356012641.3,
+      "variacion_mensual": 19.3,
+      "variacion_anual": 415.57
+    }
+  },
+  {
+    "date": "2023-01-01",
+    "updated_at": "2023-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2023-01",
+      "indice": 12239280550707.2,
+      "variacion_mensual": 42.1,
+      "variacion_anual": 344.91
+    }
+  },
+  {
+    "date": "2022-12-01",
+    "updated_at": "2022-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-12",
+      "indice": 8610897384090.4,
+      "variacion_mensual": 35.3,
+      "variacion_anual": 234.08
+    }
+  },
+  {
+    "date": "2022-11-01",
+    "updated_at": "2022-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-11",
+      "indice": 6364445508067.7,
+      "variacion_mensual": 12.6,
+      "variacion_anual": 165.6
+    }
+  },
+  {
+    "date": "2022-10-01",
+    "updated_at": "2022-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-10",
+      "indice": 5654207045137.4,
+      "variacion_mensual": 6.2,
+      "variacion_anual": 155.8
+    }
+  },
+  {
+    "date": "2022-09-01",
+    "updated_at": "2022-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-09",
+      "indice": 5326371620985.8,
+      "variacion_mensual": 28.7,
+      "variacion_anual": 157.43
+    }
+  },
+  {
+    "date": "2022-08-01",
+    "updated_at": "2022-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-08",
+      "indice": 4137433044225.2,
+      "variacion_mensual": 8.2,
+      "variacion_anual": 114.13
+    }
+  },
+  {
+    "date": "2022-07-01",
+    "updated_at": "2022-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-07",
+      "indice": 3825157521197.5,
+      "variacion_mensual": 7.5,
+      "variacion_anual": 137.09
+    }
+  },
+  {
+    "date": "2022-06-01",
+    "updated_at": "2022-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-06",
+      "indice": 3557760912588.8,
+      "variacion_mensual": 11.4,
+      "variacion_anual": 157.24
+    }
+  },
+  {
+    "date": "2022-05-01",
+    "updated_at": "2022-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-05",
+      "indice": 3194057161963.8,
+      "variacion_mensual": 6.5,
+      "variacion_anual": 167.15
+    }
+  },
+  {
+    "date": "2022-04-01",
+    "updated_at": "2022-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-04",
+      "indice": 2997960561627.7,
+      "variacion_mensual": 4.4,
+      "variacion_anual": 222.26
+    }
+  },
+  {
+    "date": "2022-03-01",
+    "updated_at": "2022-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-03",
+      "indice": 2870702327451.8,
+      "variacion_mensual": 1.4,
+      "variacion_anual": 284.41
+    }
+  },
+  {
+    "date": "2022-02-01",
+    "updated_at": "2022-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-02",
+      "indice": 2832100793634.5,
+      "variacion_mensual": 2.9,
+      "variacion_anual": 340.45
+    }
+  },
+  {
+    "date": "2022-01-01",
+    "updated_at": "2022-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2022-01",
+      "indice": 2750974554036.0,
+      "variacion_mensual": 6.7,
+      "variacion_anual": 472.46
+    }
+  },
+  {
+    "date": "2021-12-01",
+    "updated_at": "2021-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-12",
+      "indice": 2577508248886.0,
+      "variacion_mensual": 7.6,
+      "variacion_anual": 686.38
+    }
+  },
+  {
+    "date": "2021-11-01",
+    "updated_at": "2021-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-11",
+      "indice": 2396255484070.9,
+      "variacion_mensual": 8.4,
+      "variacion_anual": 1197.5
+    }
+  },
+  {
+    "date": "2021-10-01",
+    "updated_at": "2021-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-10",
+      "indice": 2210425050108.3,
+      "variacion_mensual": 6.8,
+      "variacion_anual": 1575.26
+    }
+  },
+  {
+    "date": "2021-09-01",
+    "updated_at": "2021-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-09",
+      "indice": 2069027697276.4,
+      "variacion_mensual": 7.1,
+      "variacion_anual": 1945.99
+    }
+  },
+  {
+    "date": "2021-08-01",
+    "updated_at": "2021-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-08",
+      "indice": 1932171957524.9,
+      "variacion_mensual": 19.8,
+      "variacion_anual": 2343.88
+    }
+  },
+  {
+    "date": "2021-07-01",
+    "updated_at": "2021-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-07",
+      "indice": 1613383509819.7,
+      "variacion_mensual": 16.7,
+      "variacion_anual": 2444.42
+    }
+  },
+  {
+    "date": "2021-06-01",
+    "updated_at": "2021-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-06",
+      "indice": 1383038455119.5,
+      "variacion_mensual": 15.7,
+      "variacion_anual": 2507.87
+    }
+  },
+  {
+    "date": "2021-05-01",
+    "updated_at": "2021-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-05",
+      "indice": 1195582997017.2,
+      "variacion_mensual": 28.5,
+      "variacion_anual": 2719.47
+    }
+  },
+  {
+    "date": "2021-04-01",
+    "updated_at": "2021-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-04",
+      "indice": 930306187617.9,
+      "variacion_mensual": 24.6,
+      "variacion_anual": 2940.81
+    }
+  },
+  {
+    "date": "2021-03-01",
+    "updated_at": "2021-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-03",
+      "indice": 746784015747.9,
+      "variacion_mensual": 16.1,
+      "variacion_anual": 3012.23
+    }
+  },
+  {
+    "date": "2021-02-01",
+    "updated_at": "2021-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-02",
+      "indice": 643008821970.1,
+      "variacion_mensual": 33.8,
+      "variacion_anual": 2936.72
+    }
+  },
+  {
+    "date": "2021-01-01",
+    "updated_at": "2021-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2021-01",
+      "indice": 480553055894.4,
+      "variacion_mensual": 46.6,
+      "variacion_anual": 2665.36
+    }
+  },
+  {
+    "date": "2020-12-01",
+    "updated_at": "2020-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-12",
+      "indice": 327767509170.0,
+      "variacion_mensual": 77.5,
+      "variacion_anual": 2959.84
+    }
+  },
+  {
+    "date": "2020-11-01",
+    "updated_at": "2020-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-11",
+      "indice": 184682722830.1,
+      "variacion_mensual": 40.0,
+      "variacion_anual": 2167.71
+    }
+  },
+  {
+    "date": "2020-10-01",
+    "updated_at": "2020-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-10",
+      "indice": 131945447084.8,
+      "variacion_mensual": 30.5,
+      "variacion_anual": 1936.69
+    }
+  },
+  {
+    "date": "2020-09-01",
+    "updated_at": "2020-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-09",
+      "indice": 101126220212.8,
+      "variacion_mensual": 27.9,
+      "variacion_anual": 1813.09
+    }
+  },
+  {
+    "date": "2020-08-01",
+    "updated_at": "2020-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-08",
+      "indice": 79061685127.4,
+      "variacion_mensual": 24.7,
+      "variacion_anual": 2177.01
+    }
+  },
+  {
+    "date": "2020-07-01",
+    "updated_at": "2020-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-07",
+      "indice": 63408630581.9,
+      "variacion_mensual": 19.6,
+      "variacion_anual": 2358.49
+    }
+  },
+  {
+    "date": "2020-06-01",
+    "updated_at": "2020-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-06",
+      "indice": 53033212824.9,
+      "variacion_mensual": 25.1,
+      "variacion_anual": 2354.75
+    }
+  },
+  {
+    "date": "2020-05-01",
+    "updated_at": "2020-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-05",
+      "indice": 42404519909.6,
+      "variacion_mensual": 38.6,
+      "variacion_anual": 2296.59
+    }
+  },
+  {
+    "date": "2020-04-01",
+    "updated_at": "2020-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-04",
+      "indice": 30594008765.7,
+      "variacion_mensual": 27.5,
+      "variacion_anual": 2311.79
+    }
+  },
+  {
+    "date": "2020-03-01",
+    "updated_at": "2020-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-03",
+      "indice": 23995112795.7,
+      "variacion_mensual": 13.3,
+      "variacion_anual": 2430.6
+    }
+  },
+  {
+    "date": "2020-02-01",
+    "updated_at": "2020-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-02",
+      "indice": 21174462628.9,
+      "variacion_mensual": 21.8,
+      "variacion_anual": 2910.9
+    }
+  },
+  {
+    "date": "2020-01-01",
+    "updated_at": "2020-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2020-01",
+      "indice": 17377625281.2,
+      "variacion_mensual": 62.2,
+      "variacion_anual": 5196.96
+    }
+  },
+  {
+    "date": "2019-12-01",
+    "updated_at": "2019-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-12",
+      "indice": 10711919274.4,
+      "variacion_mensual": 31.5,
+      "variacion_anual": 9585.49
+    }
+  },
+  {
+    "date": "2019-11-01",
+    "updated_at": "2019-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-11",
+      "indice": 8144026331.7,
+      "variacion_mensual": 25.7,
+      "variacion_anual": 14291.39
+    }
+  },
+  {
+    "date": "2019-10-01",
+    "updated_at": "2019-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-10",
+      "indice": 6478423619.2,
+      "variacion_mensual": 22.6,
+      "variacion_anual": 25450.29
+    }
+  },
+  {
+    "date": "2019-09-01",
+    "updated_at": "2019-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-09",
+      "indice": 5286006314.7,
+      "variacion_mensual": 52.2,
+      "variacion_anual": 39113.75
+    }
+  },
+  {
+    "date": "2019-08-01",
+    "updated_at": "2019-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-08",
+      "indice": 3472176193.2,
+      "variacion_mensual": 34.6,
+      "variacion_anual": 58561.06
+    }
+  },
+  {
+    "date": "2019-07-01",
+    "updated_at": "2019-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-07",
+      "indice": 2579165819.7,
+      "variacion_mensual": 19.4,
+      "variacion_anual": 76597.21
+    }
+  },
+  {
+    "date": "2019-06-01",
+    "updated_at": "2019-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-06",
+      "indice": 2160431069.8,
+      "variacion_mensual": 22.1,
+      "variacion_anual": 116436.3
+    }
+  },
+  {
+    "date": "2019-05-01",
+    "updated_at": "2019-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-05",
+      "indice": 1769365833.3,
+      "variacion_mensual": 39.5,
+      "variacion_anual": 187634.91
+    }
+  },
+  {
+    "date": "2019-04-01",
+    "updated_at": "2019-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-04",
+      "indice": 1268517190.9,
+      "variacion_mensual": 33.8,
+      "variacion_anual": 282972.81
+    }
+  },
+  {
+    "date": "2019-03-01",
+    "updated_at": "2019-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-03",
+      "indice": 948197209.5,
+      "variacion_mensual": 34.8,
+      "variacion_anual": 329567.6
+    }
+  },
+  {
+    "date": "2019-02-01",
+    "updated_at": "2019-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-02",
+      "indice": 703259098.2,
+      "variacion_mensual": 114.4,
+      "variacion_anual": 344509.51
+    }
+  },
+  {
+    "date": "2019-01-01",
+    "updated_at": "2019-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2019-01",
+      "indice": 328067725.1,
+      "variacion_mensual": 196.6,
+      "variacion_anual": 232471.69
+    }
+  },
+  {
+    "date": "2018-12-01",
+    "updated_at": "2018-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-12",
+      "indice": 110597550.2,
+      "variacion_mensual": 95.4,
+      "variacion_anual": 130060.24
+    }
+  },
+  {
+    "date": "2018-11-01",
+    "updated_at": "2018-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-11",
+      "indice": 56589583.5,
+      "variacion_mensual": 123.2,
+      "variacion_anual": 103523.05
+    }
+  },
+  {
+    "date": "2018-10-01",
+    "updated_at": "2018-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-10",
+      "indice": 25355573.7,
+      "variacion_mensual": 88.1,
+      "variacion_anual": 64133.77
+    }
+  },
+  {
+    "date": "2018-09-01",
+    "updated_at": "2018-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-09",
+      "indice": 13479980.5,
+      "variacion_mensual": 127.7,
+      "variacion_anual": 44950.55
+    }
+  },
+  {
+    "date": "2018-08-01",
+    "updated_at": "2018-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-08",
+      "indice": 5919047.9,
+      "variacion_mensual": 76.0,
+      "variacion_anual": 24836.69
+    }
+  },
+  {
+    "date": "2018-07-01",
+    "updated_at": "2018-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-07",
+      "indice": 3362789.7,
+      "variacion_mensual": 81.4,
+      "variacion_anual": 16766.06
+    }
+  },
+  {
+    "date": "2018-06-01",
+    "updated_at": "2018-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-06",
+      "indice": 1853869.6,
+      "variacion_mensual": 96.7,
+      "variacion_anual": 10470.71
+    }
+  },
+  {
+    "date": "2018-05-01",
+    "updated_at": "2018-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-05",
+      "indice": 942481.0,
+      "variacion_mensual": 110.3,
+      "variacion_anual": 5937.52
+    }
+  },
+  {
+    "date": "2018-04-01",
+    "updated_at": "2018-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-04",
+      "indice": 448124.0,
+      "variacion_mensual": 55.8,
+      "variacion_anual": 3106.41
+    }
+  },
+  {
+    "date": "2018-03-01",
+    "updated_at": "2018-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-03",
+      "indice": 287622.2,
+      "variacion_mensual": 40.9,
+      "variacion_anual": 2127.89
+    }
+  },
+  {
+    "date": "2018-02-01",
+    "updated_at": "2018-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-02",
+      "indice": 204074.2,
+      "variacion_mensual": 44.7,
+      "variacion_anual": 1644.64
+    }
+  },
+  {
+    "date": "2018-01-01",
+    "updated_at": "2018-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2018-01",
+      "indice": 141060.9,
+      "variacion_mensual": 66.0,
+      "variacion_anual": 1259.22
+    }
+  },
+  {
+    "date": "2017-12-01",
+    "updated_at": "2017-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-12",
+      "indice": 84970.3,
+      "variacion_mensual": 55.6,
+      "variacion_anual": 862.63
+    }
+  },
+  {
+    "date": "2017-11-01",
+    "updated_at": "2017-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-11",
+      "indice": 54611.0,
+      "variacion_mensual": 38.3,
+      "variacion_anual": 612.11
+    }
+  },
+  {
+    "date": "2017-10-01",
+    "updated_at": "2017-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-10",
+      "indice": 39473.9,
+      "variacion_mensual": 31.9,
+      "variacion_anual": 474.26
+    }
+  },
+  {
+    "date": "2017-09-01",
+    "updated_at": "2017-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-09",
+      "indice": 29921.9,
+      "variacion_mensual": 26.1,
+      "variacion_anual": 370.14
+    }
+  },
+  {
+    "date": "2017-08-01",
+    "updated_at": "2017-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-08",
+      "indice": 23736.3,
+      "variacion_mensual": 19.0,
+      "variacion_anual": 307.44
+    }
+  },
+  {
+    "date": "2017-07-01",
+    "updated_at": "2017-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-07",
+      "indice": 19938.2,
+      "variacion_mensual": 13.7,
+      "variacion_anual": 266.71
+    }
+  },
+  {
+    "date": "2017-06-01",
+    "updated_at": "2017-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-06",
+      "indice": 17537.8,
+      "variacion_mensual": 12.3,
+      "variacion_anual": 250.65
+    }
+  },
+  {
+    "date": "2017-05-01",
+    "updated_at": "2017-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-05",
+      "indice": 15610.4,
+      "variacion_mensual": 11.7,
+      "variacion_anual": 272.04
+    }
+  },
+  {
+    "date": "2017-04-01",
+    "updated_at": "2017-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-04",
+      "indice": 13975.9,
+      "variacion_mensual": 8.3,
+      "variacion_anual": 294.62
+    }
+  },
+  {
+    "date": "2017-03-01",
+    "updated_at": "2017-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-03",
+      "indice": 12910.1,
+      "variacion_mensual": 10.4,
+      "variacion_anual": 316.97
+    }
+  },
+  {
+    "date": "2017-02-01",
+    "updated_at": "2017-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-02",
+      "indice": 11697.2,
+      "variacion_mensual": 12.7,
+      "variacion_anual": 317.59
+    }
+  },
+  {
+    "date": "2017-01-01",
+    "updated_at": "2017-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2017-01",
+      "indice": 10378.1,
+      "variacion_mensual": 17.6,
+      "variacion_anual": 302.8
+    }
+  },
+  {
+    "date": "2016-12-01",
+    "updated_at": "2016-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-12",
+      "indice": 8826.9,
+      "variacion_mensual": 15.1,
+      "variacion_anual": 274.35
+    }
+  },
+  {
+    "date": "2016-11-01",
+    "updated_at": "2016-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-11",
+      "indice": 7668.9,
+      "variacion_mensual": 11.6,
+      "variacion_anual": 253.65
+    }
+  },
+  {
+    "date": "2016-10-01",
+    "updated_at": "2016-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-10",
+      "indice": 6873.9,
+      "variacion_mensual": 8.0,
+      "variacion_anual": 252.27
+    }
+  },
+  {
+    "date": "2016-09-01",
+    "updated_at": "2016-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-09",
+      "indice": 6364.4,
+      "variacion_mensual": 9.2,
+      "variacion_anual": 263.24
+    }
+  },
+  {
+    "date": "2016-08-01",
+    "updated_at": "2016-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-08",
+      "indice": 5825.7,
+      "variacion_mensual": 7.1,
+      "variacion_anual": 270.87
+    }
+  },
+  {
+    "date": "2016-07-01",
+    "updated_at": "2016-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-07",
+      "indice": 5437.1,
+      "variacion_mensual": 8.7,
+      "variacion_anual": 289.06
+    }
+  },
+  {
+    "date": "2016-06-01",
+    "updated_at": "2016-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-06",
+      "indice": 5001.5,
+      "variacion_mensual": 19.2,
+      "variacion_anual": 296.44
+    }
+  },
+  {
+    "date": "2016-05-01",
+    "updated_at": "2016-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-05",
+      "indice": 4195.9,
+      "variacion_mensual": 18.5,
+      "variacion_anual": 265.24
+    }
+  },
+  {
+    "date": "2016-04-01",
+    "updated_at": "2016-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-04",
+      "indice": 3541.6,
+      "variacion_mensual": 14.4,
+      "variacion_anual": 232.92
+    }
+  },
+  {
+    "date": "2016-03-01",
+    "updated_at": "2016-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-03",
+      "indice": 3096.2,
+      "variacion_mensual": 10.5,
+      "variacion_anual": 209.56
+    }
+  },
+  {
+    "date": "2016-02-01",
+    "updated_at": "2016-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-02",
+      "indice": 2801.1,
+      "variacion_mensual": 8.7,
+      "variacion_anual": 195.13
+    }
+  },
+  {
+    "date": "2016-01-01",
+    "updated_at": "2016-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2016-01",
+      "indice": 2576.5,
+      "variacion_mensual": 9.3,
+      "variacion_anual": 184.76
+    }
+  },
+  {
+    "date": "2015-12-01",
+    "updated_at": "2015-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-12",
+      "indice": 2357.9,
+      "variacion_mensual": 8.7,
+      "variacion_anual": 180.87
+    }
+  },
+  {
+    "date": "2015-11-01",
+    "updated_at": "2015-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-11",
+      "indice": 2168.5,
+      "variacion_mensual": 11.1,
+      "variacion_anual": 171.98
+    }
+  },
+  {
+    "date": "2015-10-01",
+    "updated_at": "2015-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-10",
+      "indice": 1951.3,
+      "variacion_mensual": 11.4,
+      "variacion_anual": 156.14
+    }
+  },
+  {
+    "date": "2015-09-01",
+    "updated_at": "2015-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-09",
+      "indice": 1752.1,
+      "variacion_mensual": 11.5,
+      "variacion_anual": 141.54
+    }
+  },
+  {
+    "date": "2015-08-01",
+    "updated_at": "2015-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-08",
+      "indice": 1570.8,
+      "variacion_mensual": 12.4,
+      "variacion_anual": 126.86
+    }
+  },
+  {
+    "date": "2015-07-01",
+    "updated_at": "2015-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-07",
+      "indice": 1397.5,
+      "variacion_mensual": 10.8,
+      "variacion_anual": 109.77
+    }
+  },
+  {
+    "date": "2015-06-01",
+    "updated_at": "2015-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-06",
+      "indice": 1261.6,
+      "variacion_mensual": 9.8,
+      "variacion_anual": 97.22
+    }
+  },
+  {
+    "date": "2015-05-01",
+    "updated_at": "2015-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-05",
+      "indice": 1148.8,
+      "variacion_mensual": 8.0,
+      "variacion_anual": 87.53
+    }
+  },
+  {
+    "date": "2015-04-01",
+    "updated_at": "2015-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-04",
+      "indice": 1063.8,
+      "variacion_mensual": 6.4,
+      "variacion_anual": 83.6
+    }
+  },
+  {
+    "date": "2015-03-01",
+    "updated_at": "2015-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-03",
+      "indice": 1000.2,
+      "variacion_mensual": 5.4,
+      "variacion_anual": 82.42
+    }
+  },
+  {
+    "date": "2015-02-01",
+    "updated_at": "2015-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-02",
+      "indice": 949.1,
+      "variacion_mensual": 4.9,
+      "variacion_anual": 80.16
+    }
+  },
+  {
+    "date": "2015-01-01",
+    "updated_at": "2015-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2015-01",
+      "indice": 904.8,
+      "variacion_mensual": 7.8,
+      "variacion_anual": 75.79
+    }
+  },
+  {
+    "date": "2014-12-01",
+    "updated_at": "2014-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-12",
+      "indice": 839.5,
+      "variacion_mensual": 5.3,
+      "variacion_anual": 68.54
+    }
+  },
+  {
+    "date": "2014-11-01",
+    "updated_at": "2014-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-11",
+      "indice": 797.3,
+      "variacion_mensual": 4.7,
+      "variacion_anual": 63.62
+    }
+  },
+  {
+    "date": "2014-10-01",
+    "updated_at": "2014-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-10",
+      "indice": 761.8,
+      "variacion_mensual": 5.0,
+      "variacion_anual": 63.86
+    }
+  },
+  {
+    "date": "2014-09-01",
+    "updated_at": "2014-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-09",
+      "indice": 725.4,
+      "variacion_mensual": 4.8,
+      "variacion_anual": 64.01
+    }
+  },
+  {
+    "date": "2014-08-01",
+    "updated_at": "2014-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-08",
+      "indice": 692.4,
+      "variacion_mensual": 3.9,
+      "variacion_anual": 63.42
+    }
+  },
+  {
+    "date": "2014-07-01",
+    "updated_at": "2014-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-07",
+      "indice": 666.2,
+      "variacion_mensual": 4.1,
+      "variacion_anual": 61.97
+    }
+  },
+  {
+    "date": "2014-06-01",
+    "updated_at": "2014-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-06",
+      "indice": 639.7,
+      "variacion_mensual": 4.4,
+      "variacion_anual": 60.49
+    }
+  },
+  {
+    "date": "2014-05-01",
+    "updated_at": "2014-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-05",
+      "indice": 612.6,
+      "variacion_mensual": 5.7,
+      "variacion_anual": 60.91
+    }
+  },
+  {
+    "date": "2014-04-01",
+    "updated_at": "2014-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-04",
+      "indice": 579.4,
+      "variacion_mensual": 5.7,
+      "variacion_anual": 61.48
+    }
+  },
+  {
+    "date": "2014-03-01",
+    "updated_at": "2014-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-03",
+      "indice": 548.3,
+      "variacion_mensual": 4.1,
+      "variacion_anual": 59.34
+    }
+  },
+  {
+    "date": "2014-02-01",
+    "updated_at": "2014-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-02",
+      "indice": 526.8,
+      "variacion_mensual": 2.4,
+      "variacion_anual": 57.35
+    }
+  },
+  {
+    "date": "2014-01-01",
+    "updated_at": "2014-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2014-01",
+      "indice": 514.7,
+      "variacion_mensual": 3.3,
+      "variacion_anual": 56.25
+    }
+  },
+  {
+    "date": "2013-12-01",
+    "updated_at": "2013-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-12",
+      "indice": 498.1,
+      "variacion_mensual": 2.2,
+      "variacion_anual": 56.19
+    }
+  },
+  {
+    "date": "2013-11-01",
+    "updated_at": "2013-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-11",
+      "indice": 487.3,
+      "variacion_mensual": 4.8,
+      "variacion_anual": 58.16
+    }
+  },
+  {
+    "date": "2013-10-01",
+    "updated_at": "2013-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-10",
+      "indice": 464.9,
+      "variacion_mensual": 5.1,
+      "variacion_anual": 54.35
+    }
+  },
+  {
+    "date": "2013-09-01",
+    "updated_at": "2013-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-09",
+      "indice": 442.3,
+      "variacion_mensual": 4.4,
+      "variacion_anual": 49.38
+    }
+  },
+  {
+    "date": "2013-08-01",
+    "updated_at": "2013-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-08",
+      "indice": 423.7,
+      "variacion_mensual": 3.0,
+      "variacion_anual": 45.35
+    }
+  },
+  {
+    "date": "2013-07-01",
+    "updated_at": "2013-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-07",
+      "indice": 411.3,
+      "variacion_mensual": 3.2,
+      "variacion_anual": 42.61
+    }
+  },
+  {
+    "date": "2013-06-01",
+    "updated_at": "2013-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-06",
+      "indice": 398.6,
+      "variacion_mensual": 4.7,
+      "variacion_anual": 39.61
+    }
+  },
+  {
+    "date": "2013-05-01",
+    "updated_at": "2013-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-05",
+      "indice": 380.7,
+      "variacion_mensual": 6.1,
+      "variacion_anual": 35.24
+    }
+  },
+  {
+    "date": "2013-04-01",
+    "updated_at": "2013-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-04",
+      "indice": 358.8,
+      "variacion_mensual": 4.3,
+      "variacion_anual": 29.44
+    }
+  },
+  {
+    "date": "2013-03-01",
+    "updated_at": "2013-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-03",
+      "indice": 344.1,
+      "variacion_mensual": 2.8,
+      "variacion_anual": 25.13
+    }
+  },
+  {
+    "date": "2013-02-01",
+    "updated_at": "2013-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-02",
+      "indice": 334.8,
+      "variacion_mensual": 1.6,
+      "variacion_anual": 22.82
+    }
+  },
+  {
+    "date": "2013-01-01",
+    "updated_at": "2013-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2013-01",
+      "indice": 329.4,
+      "variacion_mensual": 3.3,
+      "variacion_anual": 22.18
+    }
+  },
+  {
+    "date": "2012-12-01",
+    "updated_at": "2012-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-12",
+      "indice": 318.9,
+      "variacion_mensual": 3.5,
+      "variacion_anual": 20.07
+    }
+  },
+  {
+    "date": "2012-11-01",
+    "updated_at": "2012-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-11",
+      "indice": 308.1,
+      "variacion_mensual": 2.3,
+      "variacion_anual": 18.05
+    }
+  },
+  {
+    "date": "2012-10-01",
+    "updated_at": "2012-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-10",
+      "indice": 301.2,
+      "variacion_mensual": 1.7,
+      "variacion_anual": 17.89
+    }
+  },
+  {
+    "date": "2012-09-01",
+    "updated_at": "2012-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-09",
+      "indice": 296.1,
+      "variacion_mensual": 1.6,
+      "variacion_anual": 18.02
+    }
+  },
+  {
+    "date": "2012-08-01",
+    "updated_at": "2012-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-08",
+      "indice": 291.5,
+      "variacion_mensual": 1.1,
+      "variacion_anual": 18.06
+    }
+  },
+  {
+    "date": "2012-07-01",
+    "updated_at": "2012-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-07",
+      "indice": 288.4,
+      "variacion_mensual": 1.0,
+      "variacion_anual": 19.37
+    }
+  },
+  {
+    "date": "2012-06-01",
+    "updated_at": "2012-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-06",
+      "indice": 285.5,
+      "variacion_mensual": 1.4,
+      "variacion_anual": 21.33
+    }
+  },
+  {
+    "date": "2012-05-01",
+    "updated_at": "2012-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-05",
+      "indice": 281.5,
+      "variacion_mensual": 1.6,
+      "variacion_anual": 22.6
+    }
+  },
+  {
+    "date": "2012-04-01",
+    "updated_at": "2012-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-04",
+      "indice": 277.2,
+      "variacion_mensual": 0.8,
+      "variacion_anual": 23.81
+    }
+  },
+  {
+    "date": "2012-03-01",
+    "updated_at": "2012-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-03",
+      "indice": 275.0,
+      "variacion_mensual": 0.9,
+      "variacion_anual": 24.6
+    }
+  },
+  {
+    "date": "2012-02-01",
+    "updated_at": "2012-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-02",
+      "indice": 272.6,
+      "variacion_mensual": 1.1,
+      "variacion_anual": 25.28
+    }
+  },
+  {
+    "date": "2012-01-01",
+    "updated_at": "2012-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2012-01",
+      "indice": 269.6,
+      "variacion_mensual": 1.5,
+      "variacion_anual": 26.04
+    }
+  },
+  {
+    "date": "2011-12-01",
+    "updated_at": "2011-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-12",
+      "indice": 265.6,
+      "variacion_mensual": 1.8,
+      "variacion_anual": 27.57
+    }
+  },
+  {
+    "date": "2011-11-01",
+    "updated_at": "2011-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-11",
+      "indice": 261.0,
+      "variacion_mensual": 2.2,
+      "variacion_anual": 27.63
+    }
+  },
+  {
+    "date": "2011-10-01",
+    "updated_at": "2011-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-10",
+      "indice": 255.5,
+      "variacion_mensual": 1.8,
+      "variacion_anual": 26.86
+    }
+  },
+  {
+    "date": "2011-09-01",
+    "updated_at": "2011-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-09",
+      "indice": 250.9,
+      "variacion_mensual": 1.6,
+      "variacion_anual": 26.46
+    }
+  },
+  {
+    "date": "2011-08-01",
+    "updated_at": "2011-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-08",
+      "indice": 246.9,
+      "variacion_mensual": 2.2,
+      "variacion_anual": 25.84
+    }
+  },
+  {
+    "date": "2011-07-01",
+    "updated_at": "2011-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-07",
+      "indice": 241.6,
+      "variacion_mensual": 2.7,
+      "variacion_anual": 25.12
+    }
+  },
+  {
+    "date": "2011-06-01",
+    "updated_at": "2011-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-06",
+      "indice": 235.3,
+      "variacion_mensual": 2.5,
+      "variacion_anual": 23.58
+    }
+  },
+  {
+    "date": "2011-05-01",
+    "updated_at": "2011-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-05",
+      "indice": 229.6,
+      "variacion_mensual": 2.5,
+      "variacion_anual": 22.78
+    }
+  },
+  {
+    "date": "2011-04-01",
+    "updated_at": "2011-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-04",
+      "indice": 223.9,
+      "variacion_mensual": 1.4,
+      "variacion_anual": 22.89
+    }
+  },
+  {
+    "date": "2011-03-01",
+    "updated_at": "2011-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-03",
+      "indice": 220.7,
+      "variacion_mensual": 1.4,
+      "variacion_anual": 27.42
+    }
+  },
+  {
+    "date": "2011-02-01",
+    "updated_at": "2011-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-02",
+      "indice": 217.6,
+      "variacion_mensual": 1.7,
+      "variacion_anual": 28.68
+    }
+  },
+  {
+    "date": "2011-01-01",
+    "updated_at": "2011-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2011-01",
+      "indice": 213.9,
+      "variacion_mensual": 2.7,
+      "variacion_anual": 28.47
+    }
+  },
+  {
+    "date": "2010-12-01",
+    "updated_at": "2010-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-12",
+      "indice": 208.2,
+      "variacion_mensual": 1.8,
+      "variacion_anual": 27.18
+    }
+  },
+  {
+    "date": "2010-11-01",
+    "updated_at": "2010-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-11",
+      "indice": 204.5,
+      "variacion_mensual": 1.5,
+      "variacion_anual": 27.02
+    }
+  },
+  {
+    "date": "2010-10-01",
+    "updated_at": "2010-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-10",
+      "indice": 201.4,
+      "variacion_mensual": 1.5,
+      "variacion_anual": 27.47
+    }
+  },
+  {
+    "date": "2010-09-01",
+    "updated_at": "2010-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-09",
+      "indice": 198.4,
+      "variacion_mensual": 1.1,
+      "variacion_anual": 27.92
+    }
+  },
+  {
+    "date": "2010-08-01",
+    "updated_at": "2010-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-08",
+      "indice": 196.2,
+      "variacion_mensual": 1.6,
+      "variacion_anual": 29.68
+    }
+  },
+  {
+    "date": "2010-07-01",
+    "updated_at": "2010-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-07",
+      "indice": 193.1,
+      "variacion_mensual": 1.4,
+      "variacion_anual": 30.47
+    }
+  },
+  {
+    "date": "2010-06-01",
+    "updated_at": "2010-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-06",
+      "indice": 190.4,
+      "variacion_mensual": 1.8,
+      "variacion_anual": 31.31
+    }
+  },
+  {
+    "date": "2010-05-01",
+    "updated_at": "2010-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-05",
+      "indice": 187.0,
+      "variacion_mensual": 2.6,
+      "variacion_anual": 31.23
+    }
+  },
+  {
+    "date": "2010-04-01",
+    "updated_at": "2010-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-04",
+      "indice": 182.2,
+      "variacion_mensual": 5.2,
+      "variacion_anual": 30.42
+    }
+  },
+  {
+    "date": "2010-03-01",
+    "updated_at": "2010-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-03",
+      "indice": 173.2,
+      "variacion_mensual": 2.4,
+      "variacion_anual": 26.24
+    }
+  },
+  {
+    "date": "2010-02-01",
+    "updated_at": "2010-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-02",
+      "indice": 169.1,
+      "variacion_mensual": 1.6,
+      "variacion_anual": 24.71
+    }
+  },
+  {
+    "date": "2010-01-01",
+    "updated_at": "2010-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2010-01",
+      "indice": 166.5,
+      "variacion_mensual": 1.7,
+      "variacion_anual": 24.35
+    }
+  },
+  {
+    "date": "2009-12-01",
+    "updated_at": "2009-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-12",
+      "indice": 163.7,
+      "variacion_mensual": 1.7,
+      "variacion_anual": 25.06
+    }
+  },
+  {
+    "date": "2009-11-01",
+    "updated_at": "2009-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-11",
+      "indice": 161.0,
+      "variacion_mensual": 1.9,
+      "variacion_anual": 26.18
+    }
+  },
+  {
+    "date": "2009-10-01",
+    "updated_at": "2009-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-10",
+      "indice": 158.0,
+      "variacion_mensual": 1.9,
+      "variacion_anual": 26.7
+    }
+  },
+  {
+    "date": "2009-09-01",
+    "updated_at": "2009-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-09",
+      "indice": 155.1,
+      "variacion_mensual": 2.5,
+      "variacion_anual": 27.34
+    }
+  },
+  {
+    "date": "2009-08-01",
+    "updated_at": "2009-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-08",
+      "indice": 151.3,
+      "variacion_mensual": 2.2,
+      "variacion_anual": 26.72
+    }
+  },
+  {
+    "date": "2009-07-01",
+    "updated_at": "2009-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-07",
+      "indice": 148.0,
+      "variacion_mensual": 2.1,
+      "variacion_anual": 26.17
+    }
+  },
+  {
+    "date": "2009-06-01",
+    "updated_at": "2009-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-06",
+      "indice": 145.0,
+      "variacion_mensual": 1.8,
+      "variacion_anual": 25.98
+    }
+  },
+  {
+    "date": "2009-05-01",
+    "updated_at": "2009-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-05",
+      "indice": 142.5,
+      "variacion_mensual": 2.0,
+      "variacion_anual": 26.78
+    }
+  },
+  {
+    "date": "2009-04-01",
+    "updated_at": "2009-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-04",
+      "indice": 139.7,
+      "variacion_mensual": 1.8,
+      "variacion_anual": 28.28
+    }
+  },
+  {
+    "date": "2009-03-01",
+    "updated_at": "2009-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-03",
+      "indice": 137.2,
+      "variacion_mensual": 1.2,
+      "variacion_anual": 28.1
+    }
+  },
+  {
+    "date": "2009-02-01",
+    "updated_at": "2009-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-02",
+      "indice": 135.6,
+      "variacion_mensual": 1.3,
+      "variacion_anual": 28.77
+    }
+  },
+  {
+    "date": "2009-01-01",
+    "updated_at": "2009-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2009-01",
+      "indice": 133.9,
+      "variacion_mensual": 2.3,
+      "variacion_anual": 29.87
+    }
+  },
+  {
+    "date": "2008-12-01",
+    "updated_at": "2008-12-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-12",
+      "indice": 130.9,
+      "variacion_mensual": 2.6,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-11-01",
+    "updated_at": "2008-11-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-11",
+      "indice": 127.6,
+      "variacion_mensual": 2.3,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-10-01",
+    "updated_at": "2008-10-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-10",
+      "indice": 124.7,
+      "variacion_mensual": 2.4,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-09-01",
+    "updated_at": "2008-09-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-09",
+      "indice": 121.8,
+      "variacion_mensual": 2.0,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-08-01",
+    "updated_at": "2008-08-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-08",
+      "indice": 119.4,
+      "variacion_mensual": 1.8,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-07-01",
+    "updated_at": "2008-07-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-07",
+      "indice": 117.3,
+      "variacion_mensual": 1.9,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-06-01",
+    "updated_at": "2008-06-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-06",
+      "indice": 115.1,
+      "variacion_mensual": 2.4,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-05-01",
+    "updated_at": "2008-05-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-05",
+      "indice": 112.4,
+      "variacion_mensual": 3.2,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-04-01",
+    "updated_at": "2008-04-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-04",
+      "indice": 108.9,
+      "variacion_mensual": 1.7,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-03-01",
+    "updated_at": "2008-03-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-03",
+      "indice": 107.1,
+      "variacion_mensual": 1.7,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-02-01",
+    "updated_at": "2008-02-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-02",
+      "indice": 105.3,
+      "variacion_mensual": 2.1,
+      "variacion_anual": null
+    }
+  },
+  {
+    "date": "2008-01-01",
+    "updated_at": "2008-01-01T00:00:00Z",
+    "tasa_bcv": null,
+    "ipc": {
+      "fecha": "2008-01",
+      "indice": 103.1,
+      "variacion_mensual": 3.1,
+      "variacion_anual": null
+    }
+  }
+]

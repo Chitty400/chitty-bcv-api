@@ -1,9 +1,10 @@
 {
-  "updated_at": "2026-05-08T00:00:00Z",
-  "tasa_bcv": 0.0,
+  "updated_at": "2026-05-08T05:53:15Z",
+  "tasa_bcv": 499.8608,
   "ipc": {
-    "fecha": "",
-    "variacion_mensual": 0.0,
-    "variacion_anual": null
+    "fecha": "2026-04",
+    "indice": 403528566746262.0,
+    "variacion_mensual": 10.6,
+    "variacion_anual": 611.86
   }
 }

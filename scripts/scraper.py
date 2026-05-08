@@ -29,7 +29,7 @@ except ImportError:
 BCV_HOME_URL     = "https://www.bcv.org.ve/"
 BCV_IPC_XLS_URL  = (
     "https://www.bcv.org.ve/sites/default/files/precios_consumidor/"
-    "4_5_7_0.xls"
+    "4_5_7_indice_y_variaciones_mensuales_serie_desde_dic_2007_1.xls"
 )
 
 HEADERS = {
@@ -181,12 +181,12 @@ def _parse_ipc_csv(text: str, meses: dict) -> dict:
         mes_lower = col0.lower()
         if mes_lower in meses and current_year and len(cols) >= 3:
             try:
-                var_m = float(cols[2])
+                indice = float(cols[1])
+                var_m  = float(cols[2])
                 mes_num = meses[mes_lower]
-                # El archivo está ordenado del más reciente al más antiguo
-                # → el primero válido que encontramos es el dato actual
                 return {
                     "fecha": f"{current_year}-{mes_num:02d}",
+                    "indice": indice,
                     "variacion_mensual": round(var_m, 2),
                     "variacion_anual": None,
                 }
@@ -267,7 +267,41 @@ def save_json(path: Path, data, indent: int = 2):
 
 # ── Lógica principal ──────────────────────────────────────────────────────────
 
-def build_latest(tasa: float, ipc: dict) -> dict:
+def calcular_variacion_anual(ipc: dict, history_data: list | None) -> dict:
+    """
+    Busca en el historial el índice del mismo mes del año anterior
+    y calcula la variación anual: (indice_actual / indice_anterior - 1) * 100
+    """
+    if not history_data or "indice" not in ipc:
+        return ipc
+
+    fecha_actual = ipc["fecha"]          # "2026-04"
+    try:
+        anio, mes = fecha_actual.split("-")
+        fecha_anterior = f"{int(anio) - 1}-{mes}"   # "2025-04"
+    except ValueError:
+        return ipc
+
+    # Buscar en historial
+    indice_anterior = None
+    for entry in history_data:
+        ipc_entry = entry.get("ipc", {})
+        if ipc_entry.get("fecha") == fecha_anterior and ipc_entry.get("indice"):
+            indice_anterior = ipc_entry["indice"]
+            break
+
+    if indice_anterior and indice_anterior != 0:
+        var_anual = ((ipc["indice"] / indice_anterior) - 1) * 100
+        ipc = {**ipc, "variacion_anual": round(var_anual, 2)}
+        print(f"  Variación anual calculada: {ipc['variacion_anual']}% "
+              f"(índice {ipc['indice']:.2f} vs {indice_anterior:.2f} en {fecha_anterior})")
+    else:
+        print(f"  Sin datos del año anterior ({fecha_anterior}) para calcular variación anual")
+
+    return ipc
+
+
+
     return {
         "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "tasa_bcv": tasa,
@@ -345,6 +379,10 @@ def main():
     if tasa is None or not ipc:
         print("\nERROR: Datos incompletos, no se puede generar JSON.")
         sys.exit(1)
+
+    # Calcular variación anual antes de armar el JSON
+    if mode in ("ipc", "all", "both"):
+        ipc = calcular_variacion_anual(ipc, history_data)
 
     latest = build_latest(tasa, ipc)
     history_data = update_history(history_data, latest)
