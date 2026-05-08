@@ -83,7 +83,7 @@ Future<Map<String, dynamic>> fetchBCV() async {
 
 ```bash
 git clone https://github.com/chitty400/chitty-bcv-api
-cd bcv-api
+cd chitty-bcv-api
 pip install -r scripts/requirements.txt
 
 # Actualizar tasa
