@@ -21,12 +21,17 @@ Actualizada automáticamente con GitHub Actions. Consumible desde cualquier app 
 ### `latest.json`
 ```json
 {
-  "updated_at": "2026-05-08T19:30:00Z",
-  "tasa_bcv": 100.26,
+  "updated_at": "2026-05-08T05:53:15Z",
+  "tasa_bcv": 499.8608,
+  "tasas": {
+    "usd": 499.8608,
+    "eur": null
+  },
   "ipc": {
-    "fecha": "2026-03",
-    "variacion_mensual": 13.1,
-    "variacion_anual": null
+    "fecha": "2026-04",
+    "indice": 403528566746262.0,
+    "variacion_mensual": 10.6,
+    "variacion_anual": 611.86
   }
 }
 ```
