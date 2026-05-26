@@ -1,5 +1,5 @@
 """
-BCV Scraper - Obtiene tasa de cambio USD e IPC del Banco Central de Venezuela
+BCV Scraper - Obtiene tasa de cambio USD, EUR e IPC del Banco Central de Venezuela
 Diseñado para ejecutarse en GitHub Actions y publicar JSON estático en GitHub Pages
 """
 
@@ -11,6 +11,7 @@ import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Optional  # Compatible con Python < 3.10
 
 # ── Dependencias opcionales (se instalan en el workflow) ──────────────────────
 try:
@@ -67,26 +68,64 @@ def http_get_bytes(url: str) -> bytes:
         return resp.read()
 
 
-# ── Scraper de Tasa de Cambio ────────────────────────────────────────────────
+# ── Helper de extracción de tasa desde un tag HTML ───────────────────────────
 
-def scrape_tasa_bcv() -> float:
+def _extraer_tasa_de_tag(tag) -> Optional[float]:
+    """
+    Extrae el primer número con formato de tipo de cambio (ej: 535,38530000)
+    del texto de un tag BeautifulSoup. Retorna None si no lo encuentra.
+    """
+    if tag is None:
+        return None
+    # Busca el <strong> hijo con clase strong-tb si existe, si no usa el tag directo
+    strong = tag.select_one("strong.strong-tb") or tag.find("strong") or tag
+    text = strong.get_text(strip=True).replace(",", ".")
+    m = re.search(r"\d{2,6}\.\d{2,10}", text)
+    if m:
+        return float(m.group())
+    return None
+
+
+# ── Scraper de Tasas de Cambio ────────────────────────────────────────────────
+
+def scrape_tasas_bcv() -> dict:
+    """
+    Obtiene la tasa USD y EUR desde la página principal del BCV.
+    El HTML contiene elementos con id='dolar' e id='euro', cada uno con un
+    <strong class="strong-tb"> que lleva el valor numérico.
+    Retorna un dict con claves 'usd' y 'eur' (ambas como float).
+    """
     html = http_get_text(BCV_HOME_URL)
     soup = BeautifulSoup(html, "lxml")
 
-    for selector in ["#dolar strong", ".dolar strong", "#dolar", ".tipo-cambio-dolar"]:
-        tag = soup.select_one(selector)
-        if tag:
-            text = tag.get_text(strip=True).replace(",", ".")
-            m = re.search(r"\d{2,6}[.,]\d{2,8}", text)
-            if m:
-                return float(m.group().replace(",", "."))
+    resultado = {}
 
-    text_full = soup.get_text(" ")
-    candidates = re.findall(r"\b\d{2,6}[,\.]\d{5,10}\b", text_full)
-    if candidates:
-        return float(candidates[0].replace(",", "."))
+    for moneda, elem_id in (("usd", "dolar"), ("eur", "euro")):
+        tag = soup.find(id=elem_id)
+        tasa = _extraer_tasa_de_tag(tag)
 
-    raise ValueError("No se pudo extraer la tasa de cambio del BCV")
+        # Fallback: buscar por clase CSS conocida
+        if tasa is None:
+            tag = soup.select_one(f".{elem_id}")
+            tasa = _extraer_tasa_de_tag(tag)
+
+        if tasa is not None:
+            resultado[moneda] = tasa
+            print(f"  ✓ Tasa {moneda.upper()}/VES: {tasa}")
+        else:
+            raise ValueError(
+                f"No se pudo extraer la tasa {moneda.upper()} del BCV "
+                f"(elemento '#{elem_id}' no encontrado o sin valor numérico)"
+            )
+
+    return resultado
+
+
+# ── Scraper legado de solo USD (mantiene compatibilidad) ─────────────────────
+
+def scrape_tasa_bcv() -> float:
+    """Alias de compatibilidad: retorna solo la tasa USD."""
+    return scrape_tasas_bcv()["usd"]
 
 
 # ── Scraper de IPC ────────────────────────────────────────────────────────────
@@ -167,19 +206,30 @@ def scrape_ipc_bcv() -> dict:
 
 # ── Construcción del JSON ─────────────────────────────────────────────────────
 
-def build_latest(tasa: float, ipc: dict) -> dict:
-    """Arma el objeto que se guarda en latest.json."""
+def build_latest(tasas: dict, ipc: dict) -> dict:
+    """
+    Arma el objeto que se guarda en latest.json.
+    'tasas' debe ser un dict con al menos 'usd', opcionalmente 'eur'.
+    Se mantiene 'tasa_bcv' como alias de 'usd' para compatibilidad con
+    consumidores existentes del JSON.
+    """
+    now = datetime.now(timezone.utc)
     return {
-        "date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-        "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "tasa_bcv": tasa,
+        "updated_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "tasa_bcv":   tasas["usd"],   # alias de compatibilidad
+        "tasas": {
+            "usd": tasas["usd"],
+            "eur": tasas.get("eur"),
+        },
         "ipc": ipc,
     }
 
 
 # ── Variación anual ───────────────────────────────────────────────────────────
 
-def calcular_variacion_anual(ipc: dict, history_data: list | None) -> dict:
+def calcular_variacion_anual(
+    ipc: dict, history_data: Optional[list]
+) -> dict:
     """
     Busca en el historial el índice del mismo mes del año anterior
     y calcula: (indice_actual / indice_anterior - 1) * 100
@@ -214,7 +264,7 @@ def calcular_variacion_anual(ipc: dict, history_data: list | None) -> dict:
 
 # ── Gestión de archivos JSON ──────────────────────────────────────────────────
 
-def load_json(path: Path):
+def load_json(path: Path) -> Optional[object]:
     if path.exists():
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -230,7 +280,7 @@ def save_json(path: Path, data, indent: int = 2):
 
 # ── Historial ─────────────────────────────────────────────────────────────────
 
-def update_history(history_data: list | None, latest: dict) -> list:
+def update_history(history_data: Optional[list], latest: dict) -> list:
     """
     Añade o actualiza la entrada del mes actual en el historial.
     Clave de deduplicación: ipc['fecha'] ("YYYY-MM"), ya que el IPC
@@ -268,21 +318,27 @@ def main():
     latest_prev  = load_json(LATEST_FILE) or {}
     history_data = load_json(HISTORY_FILE)
 
-    tasa = latest_prev.get("tasa_bcv")
-    ipc  = latest_prev.get("ipc", {})
+    # Leer tasas previas: soporta tanto el formato nuevo (tasas.usd/eur)
+    # como el formato legado (tasa_bcv) para retrocompatibilidad
+    tasas_prev = latest_prev.get("tasas", {})
+    if not tasas_prev and "tasa_bcv" in latest_prev:
+        tasas_prev = {"usd": latest_prev["tasa_bcv"], "eur": None}
 
-    # ── Obtener Tasa ──────────────────────────────────────────────────────
+    ipc = latest_prev.get("ipc", {})
+
+    # ── Obtener Tasas ─────────────────────────────────────────────────────
     if mode in ("tasa", "all", "both"):
-        print("\n[1/2] Scrapeando tasa de cambio BCV...")
+        print("\n[1/2] Scrapeando tasas de cambio BCV (USD y EUR)...")
         try:
-            tasa = scrape_tasa_bcv()
-            print(f"  ✓ Tasa USD/VES: {tasa}")
+            tasas_nuevas = scrape_tasas_bcv()
+            # Actualizar solo las tasas que se hayan obtenido correctamente
+            tasas_prev.update(tasas_nuevas)
         except Exception as e:
-            print(f"  ✗ ERROR obteniendo tasa: {e}")
-            if tasa is None:
-                print("  No hay tasa previa disponible, abortando.")
+            print(f"  ✗ ERROR obteniendo tasas: {e}")
+            if not tasas_prev.get("usd"):
+                print("  No hay tasa USD previa disponible, abortando.")
                 sys.exit(1)
-            print(f"  Usando tasa previa: {tasa}")
+            print(f"  Usando tasas previas: {tasas_prev}")
 
     # ── Obtener IPC ───────────────────────────────────────────────────────
     if mode in ("ipc", "all", "both"):
@@ -309,12 +365,12 @@ def main():
                 ipc = calcular_variacion_anual(ipc_nuevo, history_data)
 
     # ── Validar datos mínimos ─────────────────────────────────────────────
-    if tasa is None or not ipc:
-        print("\nERROR: Datos incompletos, no se puede generar JSON.")
+    if not tasas_prev.get("usd") or not ipc:
+        print("\nERROR: Datos incompletos (se requiere al menos USD e IPC), no se puede generar JSON.")
         sys.exit(1)
 
     # ── Construir, actualizar historial y guardar ─────────────────────────
-    latest = build_latest(tasa, ipc)
+    latest = build_latest(tasas_prev, ipc)
     history_data = update_history(history_data, latest)
 
     print("\nGuardando archivos...")
@@ -322,8 +378,9 @@ def main():
     save_json(HISTORY_FILE, history_data)
 
     print("\n✓ Completado exitosamente")
-    print(f"  Tasa:  {latest['tasa_bcv']}")
-    print(f"  IPC:   {latest['ipc']}")
+    print(f"  USD:  {latest['tasas']['usd']}")
+    print(f"  EUR:  {latest['tasas']['eur']}")
+    print(f"  IPC:  {latest['ipc']}")
 
 
 if __name__ == "__main__":
