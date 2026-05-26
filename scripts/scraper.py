@@ -79,8 +79,9 @@ def _extraer_tasa_de_tag(tag) -> Optional[float]:
         return None
     # Busca el <strong> hijo con clase strong-tb si existe, si no usa el tag directo
     strong = tag.select_one("strong.strong-tb") or tag.find("strong") or tag
-    text = strong.get_text(strip=True).replace(",", ".")
-    m = re.search(r"\d{2,6}\.\d{2,10}", text)
+    text = strong.get_text(strip=True).replace("\xa0", "").replace(",", ".")
+    # Acepta cualquier número con decimales (ej: 547.12345, 4.99, 1234.5)
+    m = re.search(r"\d+\.\d{2,}", text)
     if m:
         return float(m.group())
     return None
@@ -104,15 +105,24 @@ def scrape_tasas_bcv() -> dict:
         tag = soup.find(id=elem_id)
         tasa = _extraer_tasa_de_tag(tag)
 
-        # Fallback: buscar por clase CSS conocida
+        # Fallback 1: el BCV a veces usa clases como "euro" o "dolar" además del id
         if tasa is None:
-            tag = soup.select_one(f".{elem_id}")
+            tag = soup.select_one(f"[class~='{elem_id}']")
+            tasa = _extraer_tasa_de_tag(tag)
+
+        # Fallback 2: buscar cualquier div/section que contenga el id en su texto de clase
+        if tasa is None:
+            tag = soup.find(lambda t: t.get("id", "").lower() == elem_id
+                            or elem_id in " ".join(t.get("class", [])).lower())
             tasa = _extraer_tasa_de_tag(tag)
 
         if tasa is not None:
             resultado[moneda] = tasa
             print(f"  ✓ Tasa {moneda.upper()}/VES: {tasa}")
         else:
+            # Debug: mostrar el HTML del elemento para diagnosticar
+            raw_tag = soup.find(id=elem_id)
+            print(f"  ✗ HTML recibido para '#{elem_id}': {str(raw_tag)[:300] if raw_tag else 'NO ENCONTRADO'}")
             raise ValueError(
                 f"No se pudo extraer la tasa {moneda.upper()} del BCV "
                 f"(elemento '#{elem_id}' no encontrado o sin valor numérico)"
