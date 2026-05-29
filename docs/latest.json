@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-05-08T05:53:15Z",
-  "tasa_bcv": 499.8608,
+  "updated_at": "2026-05-28T10:14:19Z",
+  "tasa_bcv": 544.5794,
   "tasas": {
-    "usd": 499.8608,
-    "eur": null
+    "usd": 544.5794,
+    "eur": 633.48198705
   },
   "ipc": {
-    "fecha": "2026-04",
-    "indice": 403528566746262.0,
-    "variacion_mensual": 10.6,
-    "variacion_anual": 611.86
+    "fecha": "2021-03",
+    "indice": 746784015747.9,
+    "variacion_mensual": 16.1,
+    "variacion_anual": 3012.23
   }
 }
