@@ -39,7 +39,7 @@ jobs:
         run: pip install requests
 
       - name: Run P2P scraper
-        run: python p2p_scraper.py
+        run: python scripts/p2p_scraper.py
 
       - name: Commit y push history.json
         run: |
