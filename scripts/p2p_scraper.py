@@ -62,7 +62,7 @@ FILTRO_VES_FALLBACK = 3_000.0   # fallback si BCV no está disponible
 FILTRO_COP          = 1_000_000.0
 P2P_ROWS            = 20        # igual que la app Flutter
 
-OUTPUT_DIR      = Path(__file__).parent / "docs"
+OUTPUT_DIR      = Path(__file__).parent.parent / "docs"
 P2P_HISTORY_FILE = OUTPUT_DIR / "p2p_history.json"
 
 
