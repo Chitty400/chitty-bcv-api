@@ -28,10 +28,7 @@ except ImportError:
 
 # ── Constantes ────────────────────────────────────────────────────────────────
 BCV_HOME_URL    = "https://www.bcv.org.ve/"
-BCV_IPC_XLS_URL = (
-    "https://www.bcv.org.ve/sites/default/files/precios_consumidor/"
-    "4_5_7_indice_y_variaciones_mensuales_serie_desde_dic_2007_1.xls"
-)
+BCV_IPC_XLS_URL = "https://www.bcv.org.ve/sites/default/files/precios_consumidor/4_5_7.xls"
 
 HEADERS = {
     "User-Agent": (
@@ -139,78 +136,92 @@ def scrape_tasa_bcv() -> float:
 
 
 # ── Scraper de IPC ────────────────────────────────────────────────────────────
+#
+# El XLS del BCV tiene esta estructura (ordenado de más reciente a más viejo):
+#   fila: ['2021(*)', '', '']      <- año con sufijo opcional
+#   fila: ['Marzo', 746784015747.9, 16.1]
+#   fila: ['Febrero', 643008821970.1, 33.8]
+#   ...
+#   fila: [2020.0, '', '']         <- año como número float
+#   fila: ['Diciembre', 327767509170.0, 77.5]
+#
+# Como está ordenado de más reciente a más viejo, el primer mes válido
+# que encontremos ES el más reciente — retornamos ahí mismo.
+#
+# Usamos xlrd directamente en lugar de LibreOffice+CSV porque:
+#   - LibreOffice perdía el año "2021(*)" al convertir (el * rompía el regex)
+#   - xlrd lee las celdas nativas sin conversión intermedia
+
+MESES_ES = {
+    "enero": 1, "febrero": 2, "marzo": 3, "abril": 4,
+    "mayo": 5, "junio": 6, "julio": 7, "agosto": 8,
+    "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12,
+}
+
 
 def _parse_xls_bytes(content: bytes) -> dict:
-    import subprocess
+    try:
+        import xlrd
+    except ImportError:
+        raise ImportError("xlrd no instalado — agrega 'xlrd' al workflow: pip install xlrd")
+
     import tempfile
-
-    MESES_ES = {
-        "enero": 1, "febrero": 2, "marzo": 3, "abril": 4,
-        "mayo": 5, "junio": 6, "julio": 7, "agosto": 8,
-        "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12,
-    }
-
     with tempfile.NamedTemporaryFile(suffix=".xls", delete=False) as tmp:
         tmp.write(content)
         tmp_path = tmp.name
 
-    csv_path = tmp_path.replace(".xls", ".csv")
-
     try:
-        result = subprocess.run(
-            ["libreoffice", "--headless", "--convert-to", "csv",
-             tmp_path, "--outdir", os.path.dirname(tmp_path)],
-            capture_output=True, text=True, timeout=60
-        )
-        if result.returncode != 0:
-            raise ValueError(f"LibreOffice falló: {result.stderr}")
-
-        with open(csv_path, encoding="utf-8", errors="replace") as f:
-            csv_text = f.read()
+        wb = xlrd.open_workbook(tmp_path)
+        ws = wb.sheet_by_index(0)
     finally:
         os.unlink(tmp_path)
-        if os.path.exists(csv_path):
-            os.unlink(csv_path)
 
-    return _parse_ipc_csv(csv_text, MESES_ES)
-
-
-def _parse_ipc_csv(text: str, meses: dict) -> dict:
     current_year = None
-    ultimo = None  # acumula el último mes válido encontrado
 
-    for line in text.strip().splitlines():
-        cols = [c.strip() for c in line.split(",")]
-        col0 = cols[0].strip()
+    for i in range(ws.nrows):
+        col0 = ws.cell_value(i, 0)
+        col1 = ws.cell_value(i, 1)
+        col2 = ws.cell_value(i, 2)
 
-        m = re.match(r"^(\d{4})", col0)
-        if m:
-            c1 = cols[1].strip() if len(cols) > 1 else ""
-            if not c1 or not re.match(r"\d", c1):
-                current_year = int(m.group(1))
-                continue
+        # Detectar fila de año (string "2021(*)" o float 2020.0, col1 vacía)
+        anio = None
+        if isinstance(col0, str):
+            m = re.match(r"^(\d{4})", col0.strip())
+            if m and col1 == "":
+                anio = int(m.group(1))
+        elif isinstance(col0, float) and col1 == "":
+            anio = int(col0)
 
-        mes_lower = col0.lower()
-        if mes_lower in meses and current_year and len(cols) >= 3:
-            try:
-                indice  = float(cols[1])
-                var_m   = float(cols[2])
-                mes_num = meses[mes_lower]
-                # No retornamos aquí — seguimos iterando para llegar al más reciente
-                ultimo = {
-                    "fecha": f"{current_year}-{mes_num:02d}",
-                    "indice": indice,
-                    "variacion_mensual": round(var_m, 2),
-                    "variacion_anual": None,
-                }
-            except (ValueError, IndexError):
-                pass
+        if anio is not None:
+            current_year = anio
+            continue
 
-    if ultimo is None:
-        raise ValueError("No se encontraron datos IPC válidos en el CSV")
+        # Detectar fila de mes
+        if not isinstance(col0, str) or current_year is None:
+            continue
+        mes_lower = col0.strip().lower()
+        if mes_lower not in MESES_ES:
+            continue
+        if not isinstance(col1, (int, float)) or not isinstance(col2, (int, float)):
+            continue
 
-    print(f"  IPC más reciente encontrado: {ultimo['fecha']}")
-    return ultimo
+        indice = float(col1)
+        var_m  = float(col2)
+        if indice <= 0:
+            continue
+
+        # XLS ordenado de más reciente a más viejo: primer match = más reciente
+        resultado = {
+            "fecha": f"{current_year}-{MESES_ES[mes_lower]:02d}",
+            "indice": indice,
+            "variacion_mensual": round(var_m, 2),
+            "variacion_anual": None,
+        }
+        print(f"  IPC mas reciente encontrado: {resultado['fecha']}")
+        return resultado
+
+    raise ValueError("No se encontraron datos IPC validos en el XLS")
+
 
 
 def scrape_ipc_bcv() -> dict:
