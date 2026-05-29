@@ -226,9 +226,16 @@ def scrape_p2p(tasa_bcv: Optional[float]) -> dict:
 
 def load_p2p_history() -> dict:
     if P2P_HISTORY_FILE.exists():
-        with open(P2P_HISTORY_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            return data if isinstance(data, dict) else {}
+        try:
+            with open(P2P_HISTORY_FILE, "r", encoding="utf-8") as f:
+                content = f.read().strip()
+                if not content:
+                    return {}
+                data = json.loads(content)
+                return data if isinstance(data, dict) else {}
+        except json.JSONDecodeError:
+            print("  ⚠ p2p_history.json corrupto o vacío — iniciando desde cero")
+            return {}
     return {}
 
 
