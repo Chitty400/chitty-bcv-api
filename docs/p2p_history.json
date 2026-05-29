@@ -5,17 +5,19 @@
       "medianas_del_dia": [
         745.63,
         743.5,
-        733.71
+        733.71,
+        733.92
       ],
-      "tasa_final_promedio": 740.95
+      "tasa_final_promedio": 739.19
     },
     "cop": {
       "medianas_del_dia": [
         3639.0,
         3635.07,
-        3669.96
+        3669.96,
+        3669.18
       ],
-      "tasa_final_promedio": 3648.01
+      "tasa_final_promedio": 3653.3
     }
   }
 }
