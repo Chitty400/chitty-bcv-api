@@ -177,6 +177,7 @@ def _parse_xls_bytes(content: bytes) -> dict:
 
 def _parse_ipc_csv(text: str, meses: dict) -> dict:
     current_year = None
+    ultimo = None  # acumula el último mes válido encontrado
 
     for line in text.strip().splitlines():
         cols = [c.strip() for c in line.split(",")]
@@ -192,10 +193,11 @@ def _parse_ipc_csv(text: str, meses: dict) -> dict:
         mes_lower = col0.lower()
         if mes_lower in meses and current_year and len(cols) >= 3:
             try:
-                indice = float(cols[1])
-                var_m  = float(cols[2])
+                indice  = float(cols[1])
+                var_m   = float(cols[2])
                 mes_num = meses[mes_lower]
-                return {
+                # No retornamos aquí — seguimos iterando para llegar al más reciente
+                ultimo = {
                     "fecha": f"{current_year}-{mes_num:02d}",
                     "indice": indice,
                     "variacion_mensual": round(var_m, 2),
@@ -204,7 +206,11 @@ def _parse_ipc_csv(text: str, meses: dict) -> dict:
             except (ValueError, IndexError):
                 pass
 
-    raise ValueError("No se encontraron datos IPC válidos en el CSV")
+    if ultimo is None:
+        raise ValueError("No se encontraron datos IPC válidos en el CSV")
+
+    print(f"  IPC más reciente encontrado: {ultimo['fecha']}")
+    return ultimo
 
 
 def scrape_ipc_bcv() -> dict:
