@@ -1,0 +1,51 @@
+name: P2P Rate Scraper
+
+on:
+  schedule:
+    # 3 runs por día en UTC — ajusta según tu zona si quieres horas exactas
+    # Venezuela es UTC-4, Colombia es UTC-5
+    #   Run 1 → 11:00 UTC = 07:00 VET = 06:00 COT  (mañana)
+    #   Run 2 → 17:00 UTC = 13:00 VET = 12:00 COT  (mediodía)
+    #   Run 3 → 22:00 UTC = 18:00 VET = 17:00 COT  (tarde/noche)
+    - cron: '0 11 * * *'
+    - cron: '0 17 * * *'
+    - cron: '0 22 * * *'
+
+  # Permite disparar manualmente desde la UI de GitHub Actions
+  workflow_dispatch:
+
+# Solo un run a la vez — si llega un trigger mientras hay uno en curso,
+# cancela el anterior para evitar race conditions en el history.json
+concurrency:
+  group: p2p-scraper
+  cancel-in-progress: true
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # necesario para hacer push del history.json actualizado
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run P2P scraper
+        run: python p2p_scraper.py
+
+      - name: Commit y push history.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/history.json
+          # Solo hace commit si hay cambios reales
+          git diff --staged --quiet || git commit -m "p2p: update $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
