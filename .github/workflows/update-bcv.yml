@@ -1,10 +1,8 @@
 name: Update BCV Data
-
 on:
   schedule:
     - cron: "0 5 * * 1-5"   # tasa diaria
     - cron: "0 6 * * 1-5"      # IPC
-
   # Disparo manual con selector de modo
   workflow_dispatch:
     inputs:
@@ -18,6 +16,9 @@ on:
           - ipc
           - all
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: write
 
@@ -25,22 +26,17 @@ jobs:
   scrape:
     name: "Scrape BCV"
     runs-on: ubuntu-latest
-
     steps:
       # ── 1. Código ──────────────────────────────────────────────────────
       - uses: actions/checkout@v4
-
       # ── 2. Python ──────────────────────────────────────────────────────
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
-
       - name: Instalar dependencias
         run: |
-          sudo apt-get install -y libreoffice --no-install-recommends -q
-          pip install -r scripts/requirements.txt
-
+          pip install beautifulsoup4 requests lxml xlrd
       # ── 3. Resolver modo ───────────────────────────────────────────────
       # En schedule siempre actualizamos solo la tasa.
       # En workflow_dispatch usamos el input del usuario.
@@ -56,13 +52,11 @@ jobs:
           else
             echo "mode=${{ github.event.inputs.mode }}" >> "$GITHUB_OUTPUT"
           fi
-
       # ── 4. Ejecutar scraper ────────────────────────────────────────────
       - name: Ejecutar scraper
         env:
           SCRAPER_MODE: ${{ steps.mode.outputs.mode }}
         run: python scripts/scraper.py ${{ steps.mode.outputs.mode }}
-
       # ── 5. Publicar cambios ────────────────────────────────────────────
       - name: Commit datos actualizados
         uses: stefanzweifel/git-auto-commit-action@v5
