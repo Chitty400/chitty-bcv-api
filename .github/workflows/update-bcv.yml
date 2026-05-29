@@ -38,13 +38,13 @@ jobs:
         run: |
           pip install beautifulsoup4 requests lxml xlrd
       # ── 3. Resolver modo ───────────────────────────────────────────────
-      # En schedule siempre actualizamos solo la tasa.
+      # Alarma 5 AM (lun-vie) → tasa | Alarma 6 AM (lun-vie) → ipc
       # En workflow_dispatch usamos el input del usuario.
       - name: Determinar modo
         id: mode
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            if [ "${{ github.event.schedule }}" = "0 12 * * 1" ]; then
+            if [ "${{ github.event.schedule }}" = "0 6 * * 1-5" ]; then
               echo "mode=ipc" >> "$GITHUB_OUTPUT"
             else
               echo "mode=tasa" >> "$GITHUB_OUTPUT"
