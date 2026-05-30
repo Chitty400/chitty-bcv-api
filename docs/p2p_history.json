@@ -24,15 +24,17 @@
     "tasa_bcv": 549.3716,
     "ves": {
       "medianas_del_dia": [
-        739.87
+        739.87,
+        734.82
       ],
-      "tasa_final_promedio": 739.87
+      "tasa_final_promedio": 737.35
     },
     "cop": {
       "medianas_del_dia": [
-        3677.24
+        3677.24,
+        3664.05
       ],
-      "tasa_final_promedio": 3677.24
+      "tasa_final_promedio": 3670.64
     }
   }
 }
