@@ -84,25 +84,28 @@
         729.74,
         729.51,
         737.59,
-        736.8
+        736.8,
+        737.85
       ],
-      "tasa_final_promedio": 733.41
+      "tasa_final_promedio": 734.3
     },
     "cop": {
       "medianas_del_dia": [
         3588.95,
         3588.95,
         3576.5,
-        3573.4
+        3573.4,
+        3580.97
       ],
-      "tasa_final_promedio": 3581.95
+      "tasa_final_promedio": 3581.75
     },
     "eur": {
       "medianas_del_dia": [
         859.66,
-        858.74
+        858.74,
+        860.11
       ],
-      "tasa_final_promedio": 859.2
+      "tasa_final_promedio": 859.5
     }
   }
 }
