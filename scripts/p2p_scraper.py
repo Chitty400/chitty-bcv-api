@@ -129,7 +129,7 @@ def fetch_eur_usd() -> Optional[float]:
         print("  [DEBUG] Frankfurter: sin respuesta")
         return None
     print(f"  [DEBUG] Frankfurter response: {data}")
-    tasa = (data.get("rates") or {}).get("USD")
+    tasa = data.get("rate")
     if tasa and float(tasa) > 0:
         print(f"  ✓ EUR/USD Frankfurter: {tasa}")
         return float(tasa)
