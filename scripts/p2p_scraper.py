@@ -126,7 +126,9 @@ def fetch_eur_usd() -> Optional[float]:
     """
     data = http_get_json(FRANKFURTER_EUR_USD)
     if not data:
+        print("  [DEBUG] Frankfurter: sin respuesta")
         return None
+    print(f"  [DEBUG] Frankfurter response: {data}")
     tasa = (data.get("rates") or {}).get("USD")
     if tasa and float(tasa) > 0:
         print(f"  ✓ EUR/USD Frankfurter: {tasa}")
