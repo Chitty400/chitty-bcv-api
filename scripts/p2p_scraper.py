@@ -42,8 +42,9 @@ except ImportError:
 
 # ── Constantes ────────────────────────────────────────────────────────────────
 
-CHITTY_LATEST_URL = "https://chitty400.github.io/chitty-bcv-api/latest.json"
-BINANCE_P2P_URL   = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
+CHITTY_LATEST_URL    = "https://chitty400.github.io/chitty-bcv-api/latest.json"
+BINANCE_P2P_URL      = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
+FRANKFURTER_EUR_USD  = "https://api.frankfurter.dev/v2/rate/EUR/USD"
 
 HEADERS_GET = {
     "User-Agent": (
@@ -114,6 +115,23 @@ def fetch_tasa_bcv() -> Optional[float]:
         print(f"  ✓ Tasa BCV: {tasa}")
         return float(tasa)
     print("  ✗ tasa_bcv no encontrada en latest.json")
+    return None
+
+
+
+def fetch_eur_usd() -> Optional[float]:
+    """
+    Obtiene la tasa EUR/USD desde Frankfurter (BCE).
+    Respuesta esperada: { "rates": { "USD": 1.0821 }, ... }
+    """
+    data = http_get_json(FRANKFURTER_EUR_USD)
+    if not data:
+        return None
+    tasa = (data.get("rates") or {}).get("USD")
+    if tasa and float(tasa) > 0:
+        print(f"  ✓ EUR/USD Frankfurter: {tasa}")
+        return float(tasa)
+    print("  ✗ EUR/USD no encontrada en respuesta de Frankfurter")
     return None
 
 
@@ -216,9 +234,21 @@ def scrape_p2p(tasa_bcv: Optional[float]) -> dict:
         resultado_cop = 0.0
         print("  ✗ COP: sin precios válidos")
 
+    # ── EUR/VES P2P: triangulación EUR/USD (Frankfurter) × USD/VES P2P ─────────────────
+    print(f"\n  [EUR] Obteniendo EUR/USD desde Frankfurter...")
+    eur_usd = fetch_eur_usd()
+    if eur_usd and resultado_ves > 0:
+        resultado_eur = round(eur_usd * resultado_ves, 2)
+        print(f"  ✓ EUR/VES P2P: {eur_usd} × {resultado_ves:.2f} = {resultado_eur:.2f}")
+    else:
+        resultado_eur = 0.0
+        print("  ✗ EUR/VES: no se pudo calcular "
+              f"(eur_usd={eur_usd}, ves={resultado_ves})")
+
     return {
         "ves": round(resultado_ves, 2),
         "cop": round(resultado_cop, 2),
+        "eur": round(resultado_eur, 2),
     }
 
 
@@ -261,20 +291,25 @@ def update_p2p_history(
         "tasa_bcv": tasa_bcv,
         "ves": {"medianas_del_dia": [], "tasa_final_promedio": 0.0},
         "cop": {"medianas_del_dia": [], "tasa_final_promedio": 0.0},
+        "eur": {"medianas_del_dia": [], "tasa_final_promedio": 0.0},
     })
 
     # Poblar tasa_bcv si el primer run la trajo
     if tasa_bcv and not entrada.get("tasa_bcv"):
         entrada["tasa_bcv"] = tasa_bcv
 
+    # Garantizar que entradas antiguas (sin "eur") tengan la clave
+    if "eur" not in entrada:
+        entrada["eur"] = {"medianas_del_dia": [], "tasa_final_promedio": 0.0}
+
     # Acumular resultado del run actual
-    for moneda in ("ves", "cop"):
+    for moneda in ("ves", "cop", "eur"):
         resultado = snapshot[moneda]
         if resultado > 0:
             entrada[moneda]["medianas_del_dia"].append(resultado)
 
     # Recalcular promedio del día
-    for moneda in ("ves", "cop"):
+    for moneda in ("ves", "cop", "eur"):
         medianas = entrada[moneda]["medianas_del_dia"]
         if medianas:
             entrada[moneda]["tasa_final_promedio"] = round(
@@ -331,6 +366,7 @@ def main():
     print("\n✓ Completado")
     print(f"  VES tasa_final_promedio: {entrada['ves']['tasa_final_promedio']}")
     print(f"  COP tasa_final_promedio: {entrada['cop']['tasa_final_promedio']}")
+    print(f"  EUR tasa_final_promedio: {entrada['eur']['tasa_final_promedio']}")
     runs = len(entrada['ves']['medianas_del_dia'])
     print(f"  Runs del día: {runs}/3")
 
