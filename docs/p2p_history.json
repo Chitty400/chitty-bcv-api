@@ -628,21 +628,24 @@
     "tasa_bcv": 612.4332,
     "ves": {
       "medianas_del_dia": [
-        795.0
+        795.0,
+        797.36
       ],
-      "tasa_final_promedio": 795.0
+      "tasa_final_promedio": 796.18
     },
     "cop": {
       "medianas_del_dia": [
-        3417.44
+        3417.44,
+        3429.48
       ],
-      "tasa_final_promedio": 3417.44
+      "tasa_final_promedio": 3423.46
     },
     "eur": {
       "medianas_del_dia": [
-        912.27
+        912.27,
+        914.81
       ],
-      "tasa_final_promedio": 912.27
+      "tasa_final_promedio": 913.54
     }
   }
 }
