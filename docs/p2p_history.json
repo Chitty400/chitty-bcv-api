@@ -974,5 +974,26 @@
       ],
       "tasa_final_promedio": 875.16
     }
+  },
+  "2026-07-05": {
+    "tasa_bcv": 652.9726,
+    "ves": {
+      "medianas_del_dia": [
+        759.67
+      ],
+      "tasa_final_promedio": 759.67
+    },
+    "cop": {
+      "medianas_del_dia": [
+        3363.32
+      ],
+      "tasa_final_promedio": 3363.32
+    },
+    "eur": {
+      "medianas_del_dia": [
+        869.52
+      ],
+      "tasa_final_promedio": 869.52
+    }
   }
 }
