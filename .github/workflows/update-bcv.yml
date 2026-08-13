@@ -1,8 +1,8 @@
 name: Update BCV Data
 on:
   schedule:
-    - cron: "0 5 * * 1-5"   # tasa diaria
-    - cron: "0 6 * * 1-5"      # IPC
+    - cron: "0 5 * * 1-6"   # tasa diaria (lun-sáb — el BCV publica la tasa del lunes desde el viernes en la tarde, así que el sábado ya hay algo nuevo que capturar)
+    - cron: "0 6 * * 1-6"      # IPC (lun-sáb)
   # Disparo manual con selector de modo
   workflow_dispatch:
     inputs:
@@ -38,13 +38,13 @@ jobs:
         run: |
           pip install beautifulsoup4 requests lxml xlrd
       # ── 3. Resolver modo ───────────────────────────────────────────────
-      # Alarma 5 AM (lun-vie) → tasa | Alarma 6 AM (lun-vie) → ipc
+      # Alarma 5 AM (lun-sáb) → tasa | Alarma 6 AM (lun-sáb) → ipc
       # En workflow_dispatch usamos el input del usuario.
       - name: Determinar modo
         id: mode
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            if [ "${{ github.event.schedule }}" = "0 6 * * 1-5" ]; then
+            if [ "${{ github.event.schedule }}" = "0 6 * * 1-6" ]; then
               echo "mode=ipc" >> "$GITHUB_OUTPUT"
             else
               echo "mode=tasa" >> "$GITHUB_OUTPUT"

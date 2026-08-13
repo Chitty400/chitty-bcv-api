@@ -9,7 +9,7 @@ import re
 import sys
 import urllib.request
 import urllib.error
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Optional  # Compatible con Python < 3.10
 
@@ -231,23 +231,75 @@ def scrape_ipc_bcv() -> dict:
     return _parse_xls_bytes(content)
 
 
+# ── Vigencia de la tasa (adelantada vs. normal) ───────────────────────────────
+#
+# El BCV publica en su página la tasa del próximo día hábil desde la tarde
+# anterior (ej: la tasa del lunes queda puesta desde el viernes ~6pm VET).
+# Como este scraper corre también sábado (ver update-bcv.yml), un run de
+# sábado (o domingo, si algún día se agrega) va a leer esa tasa "adelantada"
+# — pero el viernes debe seguir siendo LA tasa del viernes, sin que el
+# sábado/domingo la pisen. Por eso separamos:
+#
+#   - tasas / tasa_bcv   → SIEMPRE la última tasa de día hábil real (lun-vie).
+#                          No se toca en fin de semana.
+#   - adelantada         → solo se llena sáb/dom, con la tasa que el BCV ya
+#                          dejó puesta para el próximo lunes. Es opcional:
+#                          el consumidor (la app, vía el toggle) decide si
+#                          la usa o se queda con `tasas` (default).
+#
+# VET es UTC-4 fijo (Venezuela no usa horario de verano).
+
+VET_OFFSET = timedelta(hours=-4)
+
+
+def es_dia_habil(momento_vet: Optional[datetime] = None) -> bool:
+    """lunes(0) .. viernes(4) = hábil. sábado(5)/domingo(6) = no hábil."""
+    momento_vet = momento_vet or (datetime.now(timezone.utc) + VET_OFFSET)
+    return momento_vet.weekday() not in (5, 6)
+
+
+def calcular_adelantada(tasas_nuevas: dict) -> dict:
+    """
+    Arma el bloque 'adelantada' para un run de sábado/domingo: la tasa que
+    se acaba de scrapear (ya es la del próximo lunes) + para qué fecha aplica.
+    """
+    ahora_vet = datetime.now(timezone.utc) + VET_OFFSET
+    dia_semana = ahora_vet.weekday()
+    dias_hasta_lunes = (7 - dia_semana) % 7 or 7
+    proximo_habil = (ahora_vet + timedelta(days=dias_hasta_lunes)).date()
+
+    return {
+        "usd": tasas_nuevas.get("usd"),
+        "eur": tasas_nuevas.get("eur"),
+        "aplica_desde": proximo_habil.isoformat(),
+        "scrapeada_en": ahora_vet.strftime("%Y-%m-%dT%H:%M:%S-04:00"),
+    }
+
+
 # ── Construcción del JSON ─────────────────────────────────────────────────────
 
-def build_latest(tasas: dict, ipc: dict) -> dict:
+def build_latest(tasas: dict, ipc: dict, adelantada: Optional[dict] = None) -> dict:
     """
     Arma el objeto que se guarda en latest.json.
-    'tasas' debe ser un dict con al menos 'usd', opcionalmente 'eur'.
+    'tasas' debe ser un dict con al menos 'usd', opcionalmente 'eur' — SIEMPRE
+    la última tasa de día hábil real, nunca la adelantada de fin de semana.
     Se mantiene 'tasa_bcv' como alias de 'usd' para compatibilidad con
-    consumidores existentes del JSON.
+    consumidores existentes del JSON — por diseño, ese alias tampoco se ve
+    afectado por el fin de semana.
+
+    'adelantada', si se pasa, es la tasa que el BCV ya dejó puesta para el
+    próximo lunes (solo se genera en runs de sábado/domingo). Es un bloque
+    aparte y opcional — el consumidor decide si la usa.
     """
     now = datetime.now(timezone.utc)
     return {
         "updated_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "tasa_bcv":   tasas["usd"],   # alias de compatibilidad
+        "tasa_bcv":   tasas["usd"],   # alias de compatibilidad — SIEMPRE día hábil
         "tasas": {
             "usd": tasas["usd"],
             "eur": tasas.get("eur"),
         },
+        "adelantada": adelantada,   # null entre semana; objeto solo sáb/dom
         "ipc": ipc,
     }
 
@@ -353,13 +405,33 @@ def main():
 
     ipc = latest_prev.get("ipc", {})
 
+    # Preserva el bloque 'adelantada' de un run anterior por si este run no
+    # toca 'tasa' (ej. mode == 'ipc') — así no lo borramos sin querer.
+    adelantada = latest_prev.get("adelantada")
+
     # ── Obtener Tasas ─────────────────────────────────────────────────────
     if mode in ("tasa", "all", "both"):
-        print("\n[1/2] Scrapeando tasas de cambio BCV (USD y EUR)...")
+        hoy_habil = es_dia_habil()
+        print(f"\n[1/2] Scrapeando tasas de cambio BCV (USD y EUR)... "
+              f"({'día hábil' if hoy_habil else 'fin de semana — tasa adelantada'})")
         try:
             tasas_nuevas = scrape_tasas_bcv()
-            # Actualizar solo las tasas que se hayan obtenido correctamente
-            tasas_prev.update(tasas_nuevas)
+
+            if hoy_habil:
+                # Flujo normal: la tasa scrapeada ES la tasa vigente de hoy.
+                # Actualizar solo las tasas que se hayan obtenido correctamente.
+                tasas_prev.update(tasas_nuevas)
+                # Ya es día hábil de nuevo — cualquier 'adelantada' de un
+                # fin de semana anterior quedó consumida/obsoleta.
+                adelantada = None
+            else:
+                # Sábado/domingo: NO tocar tasas_prev (debe seguir siendo
+                # la del viernes). Lo scrapeado es la tasa que el BCV ya
+                # adelantó para el próximo lunes — va aparte, opcional.
+                adelantada = calcular_adelantada(tasas_nuevas)
+                print(f"  ✓ Tasa adelantada (aplica desde {adelantada['aplica_desde']}): "
+                      f"USD={adelantada['usd']} EUR={adelantada['eur']}")
+                print(f"  (tasa de hoy se mantiene sin cambios: {tasas_prev.get('usd')})")
         except Exception as e:
             print(f"  ✗ ERROR obteniendo tasas: {e}")
             if not tasas_prev.get("usd"):
@@ -397,7 +469,7 @@ def main():
         sys.exit(1)
 
     # ── Construir, actualizar historial y guardar ─────────────────────────
-    latest = build_latest(tasas_prev, ipc)
+    latest = build_latest(tasas_prev, ipc, adelantada)
     history_data = update_history(history_data, latest)
 
     print("\nGuardando archivos...")
@@ -408,6 +480,9 @@ def main():
     print(f"  USD:  {latest['tasas']['usd']}")
     print(f"  EUR:  {latest['tasas']['eur']}")
     print(f"  IPC:  {latest['ipc']}")
+    if latest.get("adelantada"):
+        a = latest["adelantada"]
+        print(f"  Adelantada (aplica {a['aplica_desde']}): USD={a['usd']} EUR={a['eur']}")
 
 
 if __name__ == "__main__":
