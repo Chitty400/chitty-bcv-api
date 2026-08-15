@@ -1,11 +1,16 @@
 {
-  "updated_at": "2026-08-14T06:14:17Z",
+  "updated_at": "2026-08-15T05:25:46Z",
   "tasa_bcv": 771.0714,
   "tasas": {
     "usd": 771.0714,
     "eur": 889.45399204
   },
-  "adelantada": null,
+  "adelantada": {
+    "usd": 772.5441,
+    "eur": 894.49018618,
+    "aplica_desde": "2026-08-17",
+    "scrapeada_en": "2026-08-15T01:25:46-04:00"
+  },
   "ipc": {
     "fecha": "2026-07",
     "indice": 585239124308517.1,
