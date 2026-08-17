@@ -2134,21 +2134,24 @@
     "tasa_bcv": 772.5441,
     "ves": {
       "medianas_del_dia": [
-        870.87
+        870.87,
+        881.6
       ],
-      "tasa_final_promedio": 870.87
+      "tasa_final_promedio": 876.24
     },
     "cop": {
       "medianas_del_dia": [
-        3149.89
+        3149.89,
+        3137.93
       ],
-      "tasa_final_promedio": 3149.89
+      "tasa_final_promedio": 3143.91
     },
     "eur": {
       "medianas_del_dia": [
-        1007.77
+        1007.77,
+        1020.98
       ],
-      "tasa_final_promedio": 1007.77
+      "tasa_final_promedio": 1014.38
     }
   }
 }
