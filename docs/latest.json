@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-05T08:51:34Z",
+  "updated_at": "2026-09-05T09:48:29Z",
   "tasa_bcv": 807.3862,
   "tasas": {
     "usd": 807.3862,
@@ -12,9 +12,9 @@
     "scrapeada_en": "2026-09-05T04:51:34-04:00"
   },
   "ipc": {
-    "fecha": "2026-07",
-    "indice": 585239124308517.1,
-    "variacion_mensual": 19.9,
-    "variacion_anual": 575.96
+    "fecha": "2026-08",
+    "indice": 637409769724325.1,
+    "variacion_mensual": 8.9,
+    "variacion_anual": 534.21
   }
 }
