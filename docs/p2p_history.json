@@ -2777,5 +2777,26 @@
       ],
       "tasa_final_promedio": 1124.34
     }
+  },
+  "2026-09-10": {
+    "tasa_bcv": 827.7371,
+    "ves": {
+      "medianas_del_dia": [
+        965.08
+      ],
+      "tasa_final_promedio": 965.08
+    },
+    "cop": {
+      "medianas_del_dia": [
+        3105.38
+      ],
+      "tasa_final_promedio": 3105.38
+    },
+    "eur": {
+      "medianas_del_dia": [
+        1123.45
+      ],
+      "tasa_final_promedio": 1123.45
+    }
   }
 }
