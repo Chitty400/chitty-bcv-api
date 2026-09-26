@@ -3211,21 +3211,24 @@
     "tasa_bcv": 855.6625,
     "ves": {
       "medianas_del_dia": [
-        973.33
+        973.33,
+        970.58
       ],
-      "tasa_final_promedio": 973.33
+      "tasa_final_promedio": 971.96
     },
     "cop": {
       "medianas_del_dia": [
-        3277.5
+        3277.5,
+        3273.88
       ],
-      "tasa_final_promedio": 3277.5
+      "tasa_final_promedio": 3275.69
     },
     "eur": {
       "medianas_del_dia": [
-        1109.4
+        1109.4,
+        1106.37
       ],
-      "tasa_final_promedio": 1109.4
+      "tasa_final_promedio": 1107.88
     }
   }
 }
