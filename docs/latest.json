@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05T12:05:05Z",
+  "updated_at": "2026-10-05T13:18:23Z",
   "tasa_bcv": 871.3689,
   "tasas": {
     "usd": 871.3689,
@@ -7,9 +7,9 @@
   },
   "adelantada": null,
   "ipc": {
-    "fecha": "2026-08",
-    "indice": 637409769724325.1,
-    "variacion_mensual": 8.9,
-    "variacion_anual": 534.21
+    "fecha": "2026-09",
+    "indice": 690967674312665.0,
+    "variacion_mensual": 8.4,
+    "variacion_anual": 465.58
   }
 }
