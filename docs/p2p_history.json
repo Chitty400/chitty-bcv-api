@@ -3721,23 +3721,26 @@
     "ves": {
       "medianas_del_dia": [
         1014.32,
-        1013.48
+        1013.48,
+        1010.98
       ],
-      "tasa_final_promedio": 1013.9
+      "tasa_final_promedio": 1012.93
     },
     "cop": {
       "medianas_del_dia": [
         3188.43,
-        3175.57
+        3175.57,
+        3174.7
       ],
-      "tasa_final_promedio": 3182.0
+      "tasa_final_promedio": 3179.57
     },
     "eur": {
       "medianas_del_dia": [
         1136.03,
-        1135.09
+        1135.09,
+        1131.99
       ],
-      "tasa_final_promedio": 1135.56
+      "tasa_final_promedio": 1134.37
     }
   }
 }
