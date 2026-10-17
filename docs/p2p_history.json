@@ -3775,25 +3775,28 @@
       "medianas_del_dia": [
         1010.94,
         1014.44,
-        1008.47
+        1008.47,
+        1007.75
       ],
-      "tasa_final_promedio": 1011.28
+      "tasa_final_promedio": 1010.4
     },
     "cop": {
       "medianas_del_dia": [
         3176.07,
         3168.86,
-        3169.5
+        3169.5,
+        3176.89
       ],
-      "tasa_final_promedio": 3171.48
+      "tasa_final_promedio": 3172.83
     },
     "eur": {
       "medianas_del_dia": [
         1134.88,
         1139.11,
-        1132.41
+        1132.41,
+        1131.6
       ],
-      "tasa_final_promedio": 1135.47
+      "tasa_final_promedio": 1134.5
     }
   }
 }
