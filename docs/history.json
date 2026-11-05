@@ -2505,5 +2505,20 @@
       "variacion_mensual": 8.4,
       "variacion_anual": 465.58
     }
+  },
+  {
+    "updated_at": "2026-11-05T13:50:46Z",
+    "tasa_bcv": 894.8876,
+    "tasas": {
+      "usd": 894.8876,
+      "eur": 1.006
+    },
+    "adelantada": null,
+    "ipc": {
+      "fecha": "2026-10",
+      "indice": 733714624268083.5,
+      "variacion_mensual": 6.2,
+      "variacion_anual": 376.9
+    }
   }
 ]
