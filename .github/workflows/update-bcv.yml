@@ -58,10 +58,13 @@ jobs:
           SCRAPER_MODE: ${{ steps.mode.outputs.mode }}
         run: python scripts/scraper.py ${{ steps.mode.outputs.mode }}
       # ── 5. Publicar cambios ────────────────────────────────────────────
+      - name: Timestamp UTC
+        id: ts
+        run: echo "now=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
       - name: Commit datos actualizados
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "data(bot): ${{ steps.mode.outputs.mode }} @ ${{ github.run_started_at }}"
+          commit_message: "data(bot): ${{ steps.mode.outputs.mode }} @ ${{ steps.ts.outputs.now }}"
           file_pattern: "docs/*.json"
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"

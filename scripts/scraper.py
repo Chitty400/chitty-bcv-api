@@ -76,8 +76,23 @@ def _extraer_tasa_de_tag(tag) -> Optional[float]:
         return None
     # Busca el <strong> hijo con clase strong-tb si existe, si no usa el tag directo
     strong = tag.select_one("strong.strong-tb") or tag.find("strong") or tag
-    text = strong.get_text(strip=True).replace("\xa0", "").replace(",", ".")
-    # Acepta cualquier número con decimales (ej: 547.12345, 4.99, 1234.5)
+    text = strong.get_text(strip=True).replace("\xa0", "").replace(" ", "")
+    return _parse_numero_ve(text)
+
+
+def _parse_numero_ve(text: str) -> Optional[float]:
+    """
+    Convierte un número tal como lo publica el BCV a float.
+
+    Formato BCV: punto = miles, coma = decimal  ("1.007,12340000" → 1007.1234).
+    Antes se hacía replace(",", ".") y se tomaba el primer número con decimales, lo que
+    convertía "1.007,1234" en "1.007.1234" → 1.007 (EUR de ~1 Bs). Ahora, si hay
+    coma, se quitan TODOS los puntos (miles) y la coma pasa a decimal. Si no hay
+    coma, se acepta formato con punto decimal (ej: 547.12345) como respaldo.
+    """
+    m = re.search(r"\d[\d.]*,\d+", text)
+    if m:
+        return float(m.group().replace(".", "").replace(",", "."))
     m = re.search(r"\d+\.\d{2,}", text)
     if m:
         return float(m.group())
@@ -125,7 +140,22 @@ def scrape_tasas_bcv() -> dict:
                 f"(elemento '#{elem_id}' no encontrado o sin valor numérico)"
             )
 
+    # Guard de cordura: el EUR en Bs debe guardar proporción razonable con el
+    # USD en Bs (EUR/USD real ronda 0.8–1.5). Si no, se descarta el EUR en vez
+    # de publicar basura; el USD igual se publica.
+    if not eur_plausible(resultado.get("eur"), resultado.get("usd")):
+        print(f"  ✗ EUR descartado por cordura: eur={resultado.get('eur')} "
+              f"usd={resultado.get('usd')} (proporción fuera de 0.5–2.5)")
+        resultado.pop("eur", None)
+
     return resultado
+
+
+def eur_plausible(eur: Optional[float], usd: Optional[float]) -> bool:
+    """True si eur/usd está en un rango razonable (0.5–2.5)."""
+    if not eur or not usd or eur <= 0 or usd <= 0:
+        return False
+    return 0.5 <= eur / usd <= 2.5
 
 
 # ── Scraper legado de solo USD (mantiene compatibilidad) ─────────────────────
@@ -402,6 +432,13 @@ def main():
     tasas_prev = latest_prev.get("tasas", {})
     if not tasas_prev and "tasa_bcv" in latest_prev:
         tasas_prev = {"usd": latest_prev["tasa_bcv"], "eur": None}
+
+    # Sanea un EUR previo corrupto (ej. 1.007 publicado por el bug del punto
+    # de miles): si no pasa la cordura se descarta para no re-publicarlo.
+    if tasas_prev.get("eur") and not eur_plausible(
+            tasas_prev.get("eur"), tasas_prev.get("usd")):
+        print(f"  ✗ EUR previo descartado por cordura: {tasas_prev.get('eur')}")
+        tasas_prev["eur"] = None
 
     ipc = latest_prev.get("ipc", {})
 
