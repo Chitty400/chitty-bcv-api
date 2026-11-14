@@ -4524,5 +4524,26 @@
       ],
       "tasa_final_promedio": 1192.63
     }
+  },
+  "2026-11-14": {
+    "tasa_bcv": 911.6243,
+    "ves": {
+      "medianas_del_dia": [
+        1084.11
+      ],
+      "tasa_final_promedio": 1084.11
+    },
+    "cop": {
+      "medianas_del_dia": [
+        3294.25
+      ],
+      "tasa_final_promedio": 3294.25
+    },
+    "eur": {
+      "medianas_del_dia": [
+        1201.74
+      ],
+      "tasa_final_promedio": 1201.74
+    }
   }
 }
